@@ -12,7 +12,7 @@ class EducateurTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Educateur::class, 100)->create();
+        factory(Educateur::class, 20)->create();
     }
 }
 

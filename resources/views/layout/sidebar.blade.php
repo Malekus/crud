@@ -15,13 +15,13 @@
             </li>
             <li class="active">
                 <a href="#">
-                    <span><i class="fa file-invoice"></i></span>
+                    <span><i class="fa fa-file-alt"></i></span>
                     <span>Bilan</span>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <span><i class="fa "></i></span>
+                    <span><i class="fa fa-calendar-alt"></i></span>
                     <span>Planning</span>
                 </a>
             </li>

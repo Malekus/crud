@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             EtablissementTableSeeder::class,
             EleveTableSeeder::class,
+            EducateurTableSeeder::class,
         ]);
     }
 }

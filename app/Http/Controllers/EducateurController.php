@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EducateurRequest;
 use App\Educateur;
+use Illuminate\Http\Request;
 
 class EducateurController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $educateurs = Educateur::latest()->get();
+        if($request->ajax()) {
+            $educateurs = Educateur::latest()->get();
+            return response()->json($educateurs);
+        }
 
-        return response()->json($educateurs);
+        return view('educateur.index');
+
     }
 
     public function store(EducateurRequest $request)
