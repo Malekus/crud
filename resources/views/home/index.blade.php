@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="card sizeCard">
                 <div class="card-body">
-                    toto
+
                 </div>
             </div>
         </div>

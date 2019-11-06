@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBatimentsTable extends Migration
+class CreateEtablissementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateBatimentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('batiments', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('etablissements', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nom');
+            $table->string('ville');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateBatimentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batiments');
+        Schema::dropIfExists('etablissements');
     }
 }

@@ -27,11 +27,10 @@ class CrudGenerator extends Command
         $this->model($name);
         $this->request($name);
         $this->factory($name);
+        $this->seeder($name);
 
         File::append(base_path('routes/api.php'), 'Route::resource(\'' . Str::plural(strtolower($name)) . "', '{$name}Controller');\n");
         Artisan::call('make:migration create_'.Str::plural(strtolower($name)).'_table --create='.Str::plural(strtolower($name)));
-        Artisan::call('make:seeder '.ucfirst($name).'TableSeeder');
-        Artisan::call('make:factory '.ucfirst($name).'Factory');
         Artisan::call('make:resource '.ucfirst($name));
     }
 
@@ -93,7 +92,18 @@ class CrudGenerator extends Command
             $this->getStub('Factory')
         );
 
-        file_put_contents(app_path("../database/factories/{$name}Factory.stub.php"), $modelTemplate);
+        file_put_contents(app_path("../database/factories/{$name}Factory.php"), $modelTemplate);
+    }
+
+    protected function seeder($name)
+    {
+        $modelTemplate = str_replace(
+            ['{{modelName}}'],
+            [$name],
+            $this->getStub('Seeder')
+        );
+
+        file_put_contents(app_path("../database/seeds/{$name}TableSeeder.php"), $modelTemplate);
     }
 
 }

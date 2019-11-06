@@ -3,34 +3,42 @@
         <ul>
             <li>
                 <a href="#">
-                    <span><i class="fas fa-user"></i></span>
-                    <span>Personne</span>
+                    <span><i class="fa fa-user"></i></span>
+                    <span>Eleve</span>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <span><i class="fas fa-users"></i></span>
-                    <span>Partenaire</span>
+                    <span><i class="fa fa-users"></i></span>
+                    <span>Educateur</span>
                 </a>
             </li>
             <li class="active">
                 <a href="#">
-                    <span><i class="fas fa-chart-bar"></i></span>
+                    <span><i class="fa file-invoice"></i></span>
+                    <span>Bilan</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span><i class="fa "></i></span>
+                    <span>Planning</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span><i class="fa fa-chart-bar"></i></span>
+
                     <span>Statistique</span>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <span><i class="fas fa-exchange-alt"></i></span>
-                    <span>Exportation</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span><i class="fas fa-cogs"></i></span>
+                    <span><i class="fa fa-cogs"></i></span>
                     <span>Configuration</span>
                 </a>
             </li>
         </ul>
     </nav>
 </div>
+
