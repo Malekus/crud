@@ -26,3 +26,4 @@ Route::resource('eleves', 'EleveController');
 Route::resource('eleves', 'EleveController');
 Route::resource('eleves', 'EleveController');
 Route::resource('etablissements', 'EtablissementController');
+Route::resource('educateurs', 'EducateurController');

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class CrudGenerator extends Command
 {
 
-    protected $signature = 'crud:generator {name : Class (singular) for example User}';
+    protected $signature = 'crud:generate {name : Class (singular) for example User}';
 
     protected $description = 'Create CRUD operations';
 
