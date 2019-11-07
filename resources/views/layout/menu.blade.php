@@ -2,7 +2,7 @@
     <div class="logo">
         <a href="#">
             <i class="fa fa-tachometer-alt"></i>
-            <span>Ttire !</span>
+            <span>Test !</span>
         </a>
     </div>
     <div class="nav-trigger"><span></span></div>

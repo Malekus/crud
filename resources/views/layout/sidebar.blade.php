@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('educateur.index') }}">
                     <span><i class="fa fa-users"></i></span>
                     <span>Educateur</span>
                 </a>

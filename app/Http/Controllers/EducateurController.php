@@ -15,22 +15,36 @@ class EducateurController extends Controller
             return response()->json($educateurs);
         }
 
-        return view('educateur.index');
+        $educateurs = Educateur::latest()->paginate(10);
+        return view('educateur.index', compact('educateurs'));
 
+    }
+
+    public function create() {
+        return view('educateur.create');
     }
 
     public function store(EducateurRequest $request)
     {
-        $educateur = Educateur::create($request->all());
+        if($request->ajax()) {
+            $educateur = Educateur::create($request->all());
+            return response()->json($educateur, 201);
+        }
 
-        return response()->json($educateur, 201);
+        $educateur = $request->isMethod('put') ? Educateur::findOrFail($request->id) : new Educateur($request->all());
+        $educateur->save();
+        return redirect(route('educateur.show', compact('educateur')));
+
     }
 
-    public function show($id)
+    public function show(EducateurRequest $request, $id)
     {
-        $educateur = Educateur::findOrFail($id);
+        if($request->ajax()) {
+            $educateur = Educateur::findOrFail($id);
+            return response()->json($educateur);
+        }
 
-        return response()->json($educateur);
+
     }
 
     public function update(EducateurRequest $request, $id)

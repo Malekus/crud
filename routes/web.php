@@ -15,7 +15,10 @@ Route::get('/', 'HomeController@index');
 
 
 Route::get('/eductaeur', 'EducateurController@index')
-    ->name('educataeur.index');
+    ->name('educateur.index');
+
+Route::get('/eductaeur/create', 'EducateurController@create')
+    ->name('educateur.create');
 
 /*
 Route::get('/partenaire/create', 'PartenaireController@create')
