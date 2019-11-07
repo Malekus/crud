@@ -14,10 +14,10 @@
 Route::get('/', 'HomeController@index');
 
 
-Route::get('/eductaeur', 'EducateurController@index')
+Route::get('/eductateur', 'EducateurController@index')
     ->name('educateur.index');
 
-Route::get('/eductaeur/create', 'EducateurController@create')
+Route::get('/eductateur/create', 'EducateurController@create')
     ->name('educateur.create');
 
 /*
