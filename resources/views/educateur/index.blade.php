@@ -105,7 +105,7 @@
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
-                                                            {!! Form::open(['url' => route('educateurs.destroy', $educateur)]) !!}
+                                                            {!! Form::open(['url' => route('educateurs.destroy', $educateur), 'method'=>"delete"]) !!}
                                                             <div class="modal-body">
                                                                 <p class="text-center">Voulez vous supprimer l'éducateur {{ $educateur->nom }} {{ $educateur->prenom }} ?</p>
                                                             </div>

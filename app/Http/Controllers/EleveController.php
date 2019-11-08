@@ -55,9 +55,13 @@ class EleveController extends Controller
         return redirect(route('eleve.index'));
     }
 
-    public function destroy($id)
+    public function destroy(EleveRequest $request, $id)
     {
+        if($request->ajax()) {
+            Eleve::destroy($id);
+            return response()->json(null, 204);
+        }
         Eleve::destroy($id);
-        return response()->json(null, 204);
+        return redirect(route('eleve.index'));
     }
 }

@@ -60,10 +60,13 @@ class EducateurController extends Controller
         return redirect(route('educateur.index'));
     }
 
-    public function destroy($id)
+    public function destroy(EducateurRequest $request, $id)
     {
+        if($request->ajax()) {
+            Educateur::destroy($id);
+            return response()->json(null, 204);
+        }
         Educateur::destroy($id);
-
-        return response()->json(null, 204);
+        return redirect(route('educateur.index'));
     }
 }
