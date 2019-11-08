@@ -2,7 +2,7 @@
     <nav>
         <ul>
             <li>
-                <a href="#">
+                <a href="{{ route('eleve.index') }}">
                     <span><i class="fa fa-user"></i></span>
                     <span>Eleve</span>
                 </a>

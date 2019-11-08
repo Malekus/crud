@@ -20,14 +20,5 @@ Route::get('/eductateur', 'EducateurController@index')
 Route::get('/eductateur/create', 'EducateurController@create')
     ->name('educateur.create');
 
-/*
-Route::get('/partenaire/create', 'PartenaireController@create')
-    ->name('partenaire.create');
-Route::post('/partenaire/list', 'PartenaireController@list_')
-    ->name('partenaire.list');
-Route::get('/partenaire/{partenaire}', 'PartenaireController@show')
-    ->name('partenaire.show')
-    ->where('partenaire', '[0-9]+');
-Route::post('/partenaire', 'PartenaireController@store')
-    ->name('partenaire.store');
-*/
+Route::get('/eleve', 'EleveController@index')
+    ->name('eleve.index');

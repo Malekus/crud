@@ -58,7 +58,6 @@ class EducateurController extends Controller
         $educateur = Educateur::findOrFail($id);
         $educateur->update($request->all());
         return redirect(route('educateur.index'));
-
     }
 
     public function destroy($id)
