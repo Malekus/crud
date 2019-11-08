@@ -15,7 +15,12 @@ class EducateurController extends Controller
             return response()->json($educateurs);
         }
 
-        $educateurs = Educateur::latest()->paginate(10);
+        if ($request->get('search') == null) {
+            $educateurs = Educateur::latest()->paginate(10);
+            return view('educateur.index', compact('educateurs'));
+        }
+
+        $educateurs = Educateur::where('nom', 'like', '%' . $request->get('search') . '%')->paginate(10);
         return view('educateur.index', compact('educateurs'));
 
     }
@@ -30,11 +35,9 @@ class EducateurController extends Controller
             $educateur = Educateur::create($request->all());
             return response()->json($educateur, 201);
         }
-
         $educateur = $request->isMethod('put') ? Educateur::findOrFail($request->id) : new Educateur($request->all());
         $educateur->save();
-        return redirect(route('educateur.show', compact('educateur')));
-
+        return redirect(route('educateur.index'));
     }
 
     public function show(EducateurRequest $request, $id)
@@ -43,16 +46,19 @@ class EducateurController extends Controller
             $educateur = Educateur::findOrFail($id);
             return response()->json($educateur);
         }
-
-
     }
 
     public function update(EducateurRequest $request, $id)
     {
+        if($request->ajax()) {
+            $educateur = Educateur::findOrFail($id);
+            $educateur->update($request->all());
+            return response()->json($educateur, 200);
+        }
         $educateur = Educateur::findOrFail($id);
         $educateur->update($request->all());
+        return redirect(route('educateur.index'));
 
-        return response()->json($educateur, 200);
     }
 
     public function destroy($id)

@@ -24,9 +24,7 @@
                             </div>
 
                             <div class="float-right">
-                                <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#modalAddEducateur">
-                                    <span class="fas fa-plus"></span> Ajouter un educateur
-                                </button>
+                                <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#modalAddEducateur"><span class="fas fa-plus mr-2"></span>Ajouter un éducateur</button>
                             </div>
                         </div>
                     </div>
@@ -51,16 +49,75 @@
                                             <td>{{ $educateur->prenom  }}</td>
                                             <td>{{ \Carbon\Carbon::parse($educateur->updated_at)->format('d/m/Y') }}</td>
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-success">
-                                                    <span class="icon"><i class="fas fa-search"></i></span>
-                                                </button>
-                                                <button type="button" class="btn btn-info">
+
+                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal{{ $educateur->id }}">
                                                     <span class="icon"><i class="fas fa-edit"></i></span>
                                                 </button>
-                                                <button type="button" class="btn btn-danger deleteModal" data-toggle="modal">
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $educateur->id }}">
                                                     <span class="icon"><i class="fas fa-trash-alt"></i></span>
                                                 </button>
                                             </td>
+                                            <div class="no-height">
+                                                <div class="modal fade" tabindex="-1" role="dialog" id="editModal{{ $educateur->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5><i class="fas fa-users mr-3"></i>Modifier un educateur</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            {!! Form::model($educateur, ['method'=>"PUT", 'url' => route('educateurs.update', $educateur), 'class' => 'needs-validation', 'novalidate']) !!}
+                                                            <div class="modal-body">
+                                                                <div class="form-group row justify-content-center">
+                                                                    {!! Form::label('nom', 'Nom', ['class' => 'col-lg-2 col-form-label']) !!}
+                                                                    <div class="col-lg-6">
+                                                                        {!! Form::text('nom', null, ['class' => 'form-control', 'required']) !!}
+                                                                        <div class="invalid-feedback">
+                                                                            Saisir un nom
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row justify-content-center">
+                                                                    {!! Form::label('prenom', 'Prénom', ['class' => 'col-lg-2 col-form-label']) !!}
+                                                                    <div class="col-lg-6">
+                                                                        {!! Form::text('prenom', null, ['class' => 'form-control', 'required']) !!}
+                                                                        <div class="invalid-feedback">
+                                                                            Saisir un nom
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                                <button type="submit" class="btn btn-success">Éditer</button>
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal{{ $educateur->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5><i class="fas fa-users mr-3"></i>Supprimer un éducateur</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            {!! Form::open(['url' => route('educateurs.destroy', $educateur)]) !!}
+                                                            <div class="modal-body">
+                                                                <p class="text-center">Voulez vous supprimer l'éducateur {{ $educateur->nom }} {{ $educateur->prenom }} ?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                            </div>
+                                                            {!! Form::close() !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -84,34 +141,32 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form class="needs-validation" novalidate="">
+                    {!! Form::open(['url' => route('educateurs.store'), 'class' => 'needs-validation', 'novalidate']) !!}
+                        <div class="modal-body">
                             <div class="form-group row justify-content-center">
-                                <label for="nom" class="col-lg-2 col-form-label">Nom</label>
+                                {!! Form::label('nom', 'Nom', ['class' => 'col-lg-2 col-form-label']) !!}
                                 <div class="col-lg-6">
-                                    <input class="form-control" required name="nom" type="text" id="nom">
+                                    {!! Form::text('nom', null, ['class' => 'form-control', 'required']) !!}
                                     <div class="invalid-feedback">
                                         Saisir un nom
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group row justify-content-center">
-                                <label for="prenom" class="col-lg-2 col-form-label">Prénom</label>
+                                {!! Form::label('prenom', 'Prénom', ['class' => 'col-lg-2 col-form-label']) !!}
                                 <div class="col-lg-6">
-                                    <input class="form-control" required name="prenom" type="text" id="prenom">
+                                    {!! Form::text('prenom', null, ['class' => 'form-control', 'required']) !!}
                                     <div class="invalid-feedback">
-                                        Saisir un prénom
+                                        Saisir un nom
                                     </div>
                                 </div>
                             </div>
-                        </form>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-primary" id="addEducateur">Ajouter</button>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
