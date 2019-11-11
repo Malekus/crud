@@ -1,8 +1,8 @@
 <div class="header">
-    <div class="logo">
+    <div class="logo text-center">
         <a href="#">
             <i class="fa fa-tachometer-alt"></i>
-            <span>Test !</span>
+            <span>Apcis Student 4.0</span>
         </a>
     </div>
     <div class="nav-trigger"><span></span></div>

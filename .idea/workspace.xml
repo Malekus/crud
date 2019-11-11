@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EducateurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EducateurController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Educateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Educateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Eleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Eleve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EleveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EleveController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/EleveFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EleveFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_06_214712_create_eleves_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_06_214712_create_eleves_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/educateur/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/educateur/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/eleve/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/eleve/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/base.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,13 +143,8 @@
       <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server" />
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/maddhatter/laravel-fullcalendar" />
     </include_path>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="32" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
   </component>
   <component name="ProjectId" id="1TA8baAoei2IGD5Lwoqxv0S8kc8" />
   <component name="ProjectLevelVcsManager">
@@ -180,7 +189,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c0bcc9ad-9c11-4c60-8723-e612dd298345" name="Default" comment="" />
+      <changelist id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="" />
       <created>1572891611711</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -190,8 +199,13 @@
       <workItem from="1573057538810" duration="4724000" />
       <workItem from="1573154906254" duration="3021000" />
       <workItem from="1573212357468" duration="13879000" />
+      <workItem from="1573288350122" duration="15232000" />
+      <workItem from="1573470404471" duration="13065000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -211,8 +225,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/form.blade.php</url>
-          <line>59</line>
+          <line>67</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
+          <line>165</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
+          <line>150</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

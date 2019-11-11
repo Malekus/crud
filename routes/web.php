@@ -22,3 +22,6 @@ Route::get('/eductateur/create', 'EducateurController@create')
 
 Route::get('/eleve', 'EleveController@index')
     ->name('eleve.index');
+
+Route::get('/eleve/{id}', 'EleveController@show')
+    ->name('eleve.show');

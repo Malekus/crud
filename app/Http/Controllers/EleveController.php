@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Educateur;
 use App\Etablissement;
 use App\Http\Requests\EleveRequest;
 use App\Eleve;
@@ -31,8 +32,9 @@ class EleveController extends Controller
             $eleve = Eleve::create($request->all());
             return response()->json($eleve, 201);
         }
-        $eleve = $request->isMethod('put') ? Eleve::findOrFail($request->id) : new Eleve($request->except('etablissement'));
+        $eleve = $request->isMethod('put') ? Eleve::findOrFail($request->id) : new Eleve($request->except(['etablissement', 'educateur']));
         $eleve->etablissement()->associate(Etablissement::find($request->get('etablissement')));
+        $eleve->educateur()->associate(Educateur::find($request->get('educateur')));
         $eleve->save();
         return redirect(route('eleve.index'));
     }
@@ -40,7 +42,7 @@ class EleveController extends Controller
     public function show($id)
     {
         $eleve = Eleve::findOrFail($id);
-        return response()->json($eleve);
+        return view('eleve.show', compact(['eleve']));
     }
 
     public function update(EleveRequest $request, $id)
@@ -51,8 +53,11 @@ class EleveController extends Controller
             return response()->json($eleve, 200);
         }
         $eleve = Eleve::findOrFail($id);
-        $eleve->update($request->except('etablissement'));
-        return redirect(route('eleve.index'));
+        $eleve->update($request->except(['etablissement', 'educateur']));
+        $eleve->etablissement()->associate(Etablissement::find($request->get('etablissement')));
+        $eleve->educateur()->associate(Educateur::find($request->get('educateur')));
+        $eleve->save();
+        return redirect(route('eleve.show', $id));
     }
 
     public function destroy(EleveRequest $request, $id)

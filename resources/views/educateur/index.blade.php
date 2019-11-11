@@ -192,18 +192,6 @@
             });
         }, false);
     })();
-
-    $(document).ready(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        })
-
-        $('body').on('click', '#addEducateur', function () {
-            $('#addEducateur').parent().parent().children().eq(1).children().submit()
-        })
-    })
 </script>
 @endsection
 

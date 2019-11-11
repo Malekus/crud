@@ -52,6 +52,9 @@
                                             <td>{{ $eleve->prenom  }}</td>
                                             <td>{{ \Carbon\Carbon::parse($eleve->updated_at)->format('d/m/Y') }}</td>
                                             <td class="text-center">
+                                                <a class="btn btn-success" href="{{ route('eleve.show', $eleve) }}">
+                                                    <span class="icon"><i class="fas fa-search"></i></span>
+                                                </a>
                                                 <button type="button" class="btn btn-info" data-toggle="modal"
                                                         data-target="#editModal{{ $eleve->id }}">
                                                     <span class="icon"><i class="fas fa-edit"></i></span>
@@ -67,7 +70,7 @@
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5><i class="fas fa-users mr-3"></i>Modifier un eleve
+                                                                <h5><i class="fas fa-users mr-3"></i>Modifier un élève
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
@@ -113,7 +116,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5><i class="fas fa-users mr-3"></i>Ajouter un eleve</h5>
+                        <h5><i class="fas fa-users mr-3"></i>Ajouter un élève</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

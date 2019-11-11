@@ -56,6 +56,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group row justify-content-center">
+                {!! Form::label('educateur', 'Educateur', ['class' => 'col-lg-2 col-form-label']) !!}
+                <div class="col-lg-6">
+                    {!! Form::select('educateur', \App\Educateur::all()->pluck('full_name', 'id'), null,['class' => 'form-control']) !!}
+                    <div class="invalid-feedback">Saisir un educateur</div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -81,7 +89,7 @@
                 <div class="col-lg-6">
                     {!! Form::text('prenom', $model->prenom, ['class' => 'form-control', 'required']) !!}
                     <div class="invalid-feedback">
-                        Saisir un nom
+                        Saisir un prénom
                     </div>
                 </div>
             </div>
@@ -90,7 +98,7 @@
                 <div class="col-lg-6">
                     {!! Form::date('dateNaissance', $model->dateNaissance, ['class' => 'form-control', 'required']) !!}
                     <div class="invalid-feedback">
-                        Saisir un nom
+                        Saisir une date de naissance
                     </div>
                 </div>
             </div>
@@ -99,7 +107,7 @@
                 <div class="col-lg-6">
                     {!! Form::select('classe', ['6ème' => '6ème', '5ème' => '5ème', '4ème' => '4ème', '3ème' => '3ème'], $model->classe, ['class' => 'form-control']) !!}
                     <div class="invalid-feedback">
-                        Saisir un nom
+                        Saisir une classe
                     </div>
                 </div>
             </div>
@@ -108,7 +116,7 @@
                 <div class="col-lg-6">
                     {!! Form::select('ville', ['Stains' => 'Stains', 'Bagnolet' => 'Bagnolet', 'Epinay-sur-seine' => 'Epinay-sur-seine'], $model->ville, ['class' => 'form-control']) !!}
                     <div class="invalid-feedback">
-                        Saisir un nom
+                        Saisir une ville
                     </div>
                 </div>
             </div>
@@ -116,9 +124,15 @@
                 {!! Form::label('etablissement', 'Etablissement', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
                     {!! Form::select('etablissement', \App\Etablissement::all()->pluck('full_name', 'id'), $model->etablissement->id,['class' => 'form-control']) !!}
-                    <div class="invalid-feedback">
-                        Saisir un nom
-                    </div>
+                    <div class="invalid-feedback">Saisir un établissement</div>
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                {!! Form::label('educateur', 'Educateur', ['class' => 'col-lg-2 col-form-label']) !!}
+                <div class="col-lg-6">
+                    {!! Form::select('educateur', \App\Educateur::all()->pluck('full_name', 'id'), $model->educateur->id,['class' => 'form-control']) !!}
+                    <div class="invalid-feedback">Saisir un educateur</div>
                 </div>
             </div>
         </div>

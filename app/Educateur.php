@@ -7,4 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Educateur extends Model
 {
     protected $guarded = ['id'];
+
+    public function getFullNameAttribute()
+    {
+        return $this->nom . '  ' . $this->prenom;
+    }
+
+    public function eleves()
+    {
+        return $this->hasMany(Eleve::class);
+    }
 }

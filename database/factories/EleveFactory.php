@@ -4,6 +4,7 @@
 
 use App\Eleve;
 use App\Etablissement;
+use App\Educateur;
 use Faker\Generator as Faker;
 
 $factory->define(Eleve::class, function (Faker $faker) {
@@ -14,5 +15,6 @@ $factory->define(Eleve::class, function (Faker $faker) {
         'classe' => $faker->randomElement(['6ème', '5ème', '4ème', '3ème']),
         'ville' => $faker->randomElement(['Stains', 'Bagnolet', 'Epinay-sur-seine']),
         'etablissement_id' => Etablissement::all()->random()->id,
+        'educateur_id' => Educateur::all()->random()->id,
     ];
 });
