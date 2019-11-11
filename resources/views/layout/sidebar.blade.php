@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('planning.index') }}">
                     <span><i class="fa fa-calendar-alt"></i></span>
                     <span>Planning</span>
                 </a>

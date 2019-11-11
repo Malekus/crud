@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crud.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Educateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Educateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Eleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Eleve.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EleveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EleveController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EleveFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EleveFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_06_214712_create_eleves_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_06_214712_create_eleves_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/educateur/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/educateur/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/eleve/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/eleve/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bilan/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bilan/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -200,7 +186,7 @@
       <workItem from="1573154906254" duration="3021000" />
       <workItem from="1573212357468" duration="13879000" />
       <workItem from="1573288350122" duration="15232000" />
-      <workItem from="1573470404471" duration="13065000" />
+      <workItem from="1573470404471" duration="21340000" />
     </task>
     <servers />
   </component>
@@ -230,13 +216,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>165</line>
+          <line>195</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>150</line>
+          <line>180</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
+          <line>121</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
+          <line>136</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

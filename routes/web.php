@@ -25,3 +25,6 @@ Route::get('/eleve', 'EleveController@index')
 
 Route::get('/eleve/{id}', 'EleveController@show')
     ->name('eleve.show');
+
+Route::get('/planning', 'PlanningController@index')
+    ->name('planning.index');
