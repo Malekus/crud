@@ -33,7 +33,7 @@ class PlanningController extends Controller
         }
         $planning = $request->isMethod('put') ? Planning::findOrFail($request->id) : new Planning($request->except('bilan_id'));
         $bilan = Bilan::find($request->get('bilan_id'));
-        $planning->bilan()->associate($bilan);
+        $planning->bilan_id = $request->get('bilan_id');
         $planning->save();
         return redirect(route('eleve.show', $bilan->eleve->id));
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Eleve extends Model
 {
-    protected $fillable = ['nom', 'prenom', 'dateNaissance','classe', 'ville', 'etablissement_id', 'educateur_id'];
+    protected $fillable = ['nom', 'prenom', 'sexe', 'dateNaissance','classe', 'ville', 'etablissement_id', 'educateur_id'];
 
     public function etablissement()
     {

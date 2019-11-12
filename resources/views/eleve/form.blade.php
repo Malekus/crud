@@ -21,6 +21,15 @@
                 </div>
             </div>
             <div class="form-group row justify-content-center">
+                {!! Form::label('sexe', 'Sexe', ['class' => 'col-lg-2 col-form-label']) !!}
+                <div class="col-lg-6">
+                    {!! Form::select('sexe', ['homme' => 'homme', 'femme' => 'femme'], 'homme', ['class' => 'form-control']) !!}
+                    <div class="invalid-feedback">
+                        Saisir un sexe
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
                 {!! Form::label('dateNaissance', 'Date de naissance', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
                     {!! Form::date('dateNaissance', null, ['class' => 'form-control', 'required']) !!}
@@ -90,6 +99,15 @@
                     {!! Form::text('prenom', $model->prenom, ['class' => 'form-control', 'required']) !!}
                     <div class="invalid-feedback">
                         Saisir un prénom
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                {!! Form::label('sexe', 'Sexe', ['class' => 'col-lg-2 col-form-label']) !!}
+                <div class="col-lg-6">
+                    {!! Form::select('sexe', ['homme' => 'homme', 'femme' => 'femme'], $model->sexe, ['class' => 'form-control']) !!}
+                    <div class="invalid-feedback">
+                        Saisir un sexe
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@
                                 <li class="list-group-item atom text-white"><h5>Informations générales</h5>
                                 </li>
                                 <li class="list-group-item"><span class="font-weight-bold">Age</span> : {{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->diffInYears($eleve->dateNaissance) }} ans</li>
-                                <li class="list-group-item"><span class="font-weight-bold">Date de naissance</span> : {{ \Carbon\Carbon::parse($eleve->dateNaissance)->format('d/m/Y') }}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Sexe</span> : {{ $eleve->sexe}}</li>
                                 <li class="list-group-item"><span class="font-weight-bold">Classe</span> : {{ $eleve->classe  }}</li>
                                 <li class="list-group-item"><span class="font-weight-bold">Ville</span> : {{ $eleve->ville  }}</li>
                                 <li class="list-group-item"><span class="font-weight-bold">Etablissement</span> : {{ $eleve->etablissement->full_name  }}</li>

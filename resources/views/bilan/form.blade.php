@@ -15,7 +15,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('dateFin', 'Date de fin', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::date('dateFin', \Carbon\Carbon::now()->addDays(7), ['class' => 'form-control', 'required']) !!}
+                    {!! Form::date('dateFin', \Carbon\Carbon::now()->addDays(5), ['class' => 'form-control', 'required']) !!}
                     <div class="invalid-feedback">
                         Saisir une date de fin
                     </div>

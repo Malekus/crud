@@ -17,6 +17,7 @@ class CreateElevesTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
+            $table->string('sexe');
             $table->date('dateNaissance');
             $table->string('classe');
             $table->string('ville');

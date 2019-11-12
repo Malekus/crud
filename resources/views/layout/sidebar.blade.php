@@ -13,12 +13,6 @@
                     <span>Educateur</span>
                 </a>
             </li>
-            <li class="active">
-                <a href="#">
-                    <span><i class="fa fa-file-alt"></i></span>
-                    <span>Bilan</span>
-                </a>
-            </li>
             <li>
                 <a href="{{ route('planning.index') }}">
                     <span><i class="fa fa-calendar-alt"></i></span>
@@ -30,12 +24,6 @@
                     <span><i class="fa fa-chart-bar"></i></span>
 
                     <span>Statistique</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span><i class="fa fa-cogs"></i></span>
-                    <span>Configuration</span>
                 </a>
             </li>
         </ul>
