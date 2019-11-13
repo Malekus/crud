@@ -17,6 +17,7 @@ class PlanningController extends Controller
             $carbon = Carbon::now()->format('Y');
             $period = CarbonPeriod::create($carbon.'-01-01', ($carbon+1).'-01-01');
             $dates = $this->getOnlyMonth($period->toArray());
+//            dd($dates);
             return view('planning.index', compact('dates'));
         }
 
@@ -59,11 +60,11 @@ class PlanningController extends Controller
         $r = [];
         foreach ($data as $date){
             if(array_key_exists($date->format('m'), $r)){
-                array_push($r[$date->format('m')], $date->format('l'));
+                array_push($r[$date->format('m')], [$date->format('d/m/Y'), $this->daysEnToFr($date->format('l'))]);
             }
             else{
                 $r[$date->format('m')] = array();
-                array_push($r[$date->format('m')], $date->format('l'));
+                array_push($r[$date->format('m')], [$date->format('d/m/Y'), $this->daysEnToFr($date->format('l'))]);
             }
         }
         array_pop($r['01']);
@@ -72,12 +73,30 @@ class PlanningController extends Controller
             if(sizeof($value) != 31){
                 $nbX = 31 - sizeof($value);
                 for($i = 0; $i < $nbX; $i++){
-                    array_push($r[$key], 'X');
+                    array_push($r[$key], ['X', 'X']);
                 }
             }
         }
-
         return $r;
+    }
+
+    private function daysEnToFr($days){
+        switch ($days){
+            case "Monday":
+                return "L";
+            case "Tuesday":
+                return "M";
+            case "Wednesday":
+                return "M";
+            case "Thursday":
+                return "J";
+            case "Friday":
+                return "V";
+            case "Saturday":
+                return "S";
+            case "Sunday":
+                return "D";
+        }
     }
 
     public function destroy($id)

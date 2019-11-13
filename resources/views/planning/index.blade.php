@@ -30,24 +30,24 @@
                         <div class="col-12 mt-2">
                             <div id="ownCalendar" class="rounded">
                                 <div class="partMonthName text-capitalize">
-                                    <div>Mois</div>
-                                    <div>janvier</div>
-                                    <div>février</div>
-                                    <div>mars</div>
-                                    <div>avril</div>
-                                    <div>mai</div>
-                                    <div>juin</div>
-                                    <div>juillet</div>
-                                    <div>août</div>
-                                    <div>septembre</div>
-                                    <div>octobre</div>
-                                    <div>novembre</div>
-                                    <div>décembre</div>
+                                    <div><p>Mois</p></div>
+                                    <div><p>janvier</p></div>
+                                    <div><p>février</p></div>
+                                    <div><p>mars</p></div>
+                                    <div><p>avril</p></div>
+                                    <div><p>mai</p></div>
+                                    <div><p>juin</p></div>
+                                    <div><p>juillet</p></div>
+                                    <div><p>août</p></div>
+                                    <div><p>septembre</p></div>
+                                    <div><p>octobre</p></div>
+                                    <div><p>novembre</p></div>
+                                    <div><p>décembre</p></div>
                                 </div>
                                 <div class="partMonthDays">
                                     <div>@for($i = 1; $i<= 31; $i++) <span>{{$i}}</span>@endfor</div>
-                                    @foreach($dates as $key => $date)
-                                        <div>@foreach($date as $name) <span>{{ $name[0] }}</span>@endforeach</div>
+                                    @foreach($dates as $date)
+                                        <div>@foreach($date as $name) <span class="jour" data-id="{{ $name[0] }}">{{ $name[1] }}</span>@endforeach</div>
                                     @endforeach
                                 </div>
                             </div>
@@ -57,7 +57,6 @@
             </div>
         </div>
     </div>
-
     <style>
         #ownCalendar {
             width: 100%;
@@ -96,8 +95,17 @@
         .partMonthDays div span:hover {
             background-color: #D9DEE4;
         }
+        
     </style>
 @endsection
 
-
+@section('javascript')
+<script>
+    $(document).ready(function(){
+       $('.partMonthDays').on('click', '.jour', function(){
+           console.log($(this).attr('data-id'))
+       })
+    });
+</script>
+@endsection
 
