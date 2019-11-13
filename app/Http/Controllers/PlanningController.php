@@ -32,9 +32,9 @@ class PlanningController extends Controller
             $planning = Planning::create($request->all());
             return response()->json($planning, 201);
         }
-        $planning = $request->isMethod('put') ? Planning::findOrFail($request->id) : new Planning($request->except('bilan_id'));
+        $planning = $request->isMethod('put') ? Planning::findOrFail($request->id) : new Planning(['dateDebut'=>$request->get('dateDebut'), 'dateFin'=>$request->get('dateFin')]);
         $bilan = Bilan::find($request->get('bilan_id'));
-        $planning->bilan_id = $request->get('bilan_id');
+        $planning->bilan_id = $bilan->id;
         $planning->save();
         return redirect(route('eleve.show', $bilan->eleve->id));
 

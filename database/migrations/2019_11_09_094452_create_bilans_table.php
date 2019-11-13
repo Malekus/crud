@@ -14,8 +14,8 @@ class CreateBilansTable extends Migration
             $table->date('dateDebut');
             $table->date('dateFin');
             $table->text('rapport');
-            $table->integer('eleve_id')->nullable()->unsigned()->index();
-            $table->foreign('eleve_id')->references('id')->on('eleves')->onDelete('set null');
+            $table->integer('eleve_id')->unsigned()->index();
+            $table->foreign('eleve_id')->references('id')->on('eleves')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -22,4 +22,9 @@ class Eleve extends Model
     {
         return $this->hasMany(Bilan::class);
     }
+    public function plannings()
+    {
+        return $this->hasManyThrough(Planning::class, Bilan::class);
+    }
+
 }

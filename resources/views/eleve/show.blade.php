@@ -46,7 +46,8 @@
                                 <li class="list-group-item atom text-white"><h5>Activité</h5>
                                 </li>
                                 <li class="list-group-item"><span class="font-weight-bold">Nombre de bilan</span> : {{ sizeof($eleve->bilans) }}</li>
-                                <li class="list-group-item"><span class="font-weight-bold">Nombre de planning</span> : 5</li>
+
+                                <li class="list-group-item"><span class="font-weight-bold">Nombre de planning</span> : {{ sizeof($eleve->plannings) }}</li>
                                 <li class="list-group-item"><span class="font-weight-bold">Dernière activité</span> : {{ \Carbon\Carbon::parse($eleve->updated_at)->format('d/m/Y')  }}</li>
                                 <li class="list-group-item"><span class="font-weight-bold">Educateur</span> : {{ $eleve->educateur->nom }} {{ $eleve->educateur->prenom }}</li>
                             </ul>
@@ -81,9 +82,11 @@
                                                 <button class="btn btn-success" data-toggle="modal" data-target="#showModal{{ $bilan->id }}">
                                                     <span class="icon"><i class="fas fa-search"></i></span>
                                                 </button>
-                                                <button class="btn btn-dark" data-toggle="modal" data-target="#addModalPlanning{{ $bilan->id }}">
-                                                    <span class="icon"><i class="fa fa-plus"></i></span>
-                                                </button>
+                                                @if(!isset($bilan->planning))
+                                                    <button class="btn btn-dark" data-toggle="modal" data-target="#addModalPlanning{{ $bilan->id }}">
+                                                        <span class="icon"><i class="fa fa-plus"></i></span>
+                                                    </button>
+                                                @endif
                                                 <button class="btn btn-info" data-toggle="modal" data-target="#editModal{{ $bilan->id }}">
                                                     <span class="icon"><i class="fas fa-edit"></i></span>
                                                 </button>
@@ -108,17 +111,19 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" tabindex="-1" role="dialog" id="addModalPlanning{{ $bilan->id }}" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5><i class="fa fa-file-alt mr-3"></i>Ajouter un planning</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            @if(!isset($bilan->planning))
+                                                <div class="modal fade" tabindex="-1" role="dialog" id="addModalPlanning{{ $bilan->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5><i class="fa fa-file-alt mr-3"></i>Ajouter un planning</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            </div>
+                                                            @include('planning.form', ['typeForm'=>"create", 'bilan' => $bilan, "eleve"=>$eleve])
                                                         </div>
-                                                        @include('planning.form', ['typeForm'=>"create", 'bilan' => $bilan, "eleve"=>$eleve])
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                             <div class="modal fade" tabindex="-1" role="dialog" id="editModal{{ $bilan->id }}" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -149,6 +154,45 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    @endif
+                    @if((count($eleve->plannings) != 0))
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Plannings</h2>
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre de jour exclus</th>
+                                        <th>Nombre de retard</th>
+                                        <th>nombre d'absence</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($eleve->plannings as $key => $planning)
+                                        <tr id="{{ $planning->id  }}">
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }} jours</td>
+                                            <td>5 retards</td>
+                                            <td>0 absence</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-success" data-toggle="modal" data-target="">
+                                                    <span class="icon"><i class="fas fa-search"></i></span>
+                                                </button>
+                                                <button class="btn btn-info" data-toggle="modal" data-target="">
+                                                    <span class="icon"><i class="fas fa-edit"></i></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <div class="no-height">
+
                                         </div>
                                     @endforeach
                                     </tbody>

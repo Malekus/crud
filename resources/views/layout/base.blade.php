@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="_token" content="{{csrf_token()}}" />
     <title>Titre ! @yield('titre')</title>
+    {{--
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&amp;display=swap" rel="stylesheet">
+    --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset("css/style.css")  }}">
