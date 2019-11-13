@@ -74,7 +74,12 @@
                                         <tr id="{{ $bilan->id  }}">
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
+                                            @if($bilan->dateDebut > $bilan->dateFin)
+                                                <td class="alert alert-danger">{{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
+                                            @else
+                                                <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
+                                            @endif
+
                                             <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }} jours</td>
                                             <td>{{ \Illuminate\Support\Str::limit($bilan->rapport, $limit = 50, $end = ' [...]') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($bilan->updated_at)->format('d/m/Y')  }}</td>
