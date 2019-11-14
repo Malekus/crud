@@ -209,6 +209,44 @@
             </div>
         </div>
     </div>
+    <div style="display: flex; justify-content: flex-end; flex-direction: column; position: absolute; top: 60px; right: 15px;">
+        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
+            <div class="toast-header">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">11 mins ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
+            <div class="toast-header">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">11 mins ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
+            <div class="toast-header">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">11 mins ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('noHeight')
@@ -291,6 +329,11 @@
             });
         }, false);
     })();
+
+    $(document).ready(function(){
+        $('.toast').toast({"delay": 2000});
+        $('.toast').toast("show");
+    })
 </script>
 @endsection
 

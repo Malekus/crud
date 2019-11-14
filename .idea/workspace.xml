@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crud.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Eleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Eleve.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_09_094452_create_bilans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_09_094452_create_bilans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_11_141128_create_jours_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_11_141128_create_jours_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/eleve/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/planning/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/planning/form.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -194,6 +187,7 @@
       <workItem from="1573470404471" duration="21340000" />
       <workItem from="1573561678013" duration="7720000" />
       <workItem from="1573668246577" duration="5652000" />
+      <workItem from="1573711886523" duration="3575000" />
     </task>
     <servers />
   </component>
@@ -223,12 +217,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>239</line>
+          <line>277</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>224</line>
+          <line>262</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
