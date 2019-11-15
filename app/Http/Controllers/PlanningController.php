@@ -48,9 +48,34 @@ class PlanningController extends Controller
                 $r['matinAbsent'] = 0;
                 $r['apremAbsent'] = 0;
             }
+            elseif ($request->get('absent_'.($i+1)) == 1){
+                $r['matinAbsent'] = 1;
+                $r['apremAbsent'] = 0;
+            }
+            elseif ($request->get('absent_'.($i+1)) == 2){
+                $r['matinAbsent'] = 0;
+                $r['apremAbsent'] = 1;
+            }
+            else{
+                $r['matinAbsent'] = 1;
+                $r['apremAbsent'] = 1;
+            }
+
             if($request->get('retard_'.($i+1)) == 0){
                 $r['matinRetard'] = 0;
                 $r['apremRetard'] = 0;
+            }
+            elseif ($request->get('retard_'.($i+1)) == 1){
+                $r['matinRetard'] = 1;
+                $r['apremRetard'] = 0;
+            }
+            elseif ($request->get('retard_'.($i+1)) == 2){
+                $r['matinRetard'] = 0;
+                $r['apremRetard'] = 1;
+            }
+            else{
+                $r['matinRetard'] = 1;
+                $r['apremRetard'] = 1;
             }
 
             $jour = new Jour($r);

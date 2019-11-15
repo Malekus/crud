@@ -1,4 +1,3 @@
-
 @extends('layout.base')
 
 @section('content')
@@ -19,10 +18,22 @@
                                         Ajouter une action
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                        <button data-toggle="modal" data-target="#editModalEleve" class="dropdown-item" href="#"><span class="icon mr-2"><i class="fa fa-edit"></i></span>Modifier l'élève</button>
-                                        <button data-toggle="modal" data-target="#deleteModalEleve" class="dropdown-item" href="#"><span class="icon mr-2"><i class="fa fa-trash-alt"></i></span>Supprimer l'élève</button>
-                                        <button data-toggle="modal" data-target="#addModalBilan" class="dropdown-item" href="#"><span class="icon mr-2"><i class="fa fa-file-alt"></i></span>Ajouter un bilan</button>
-                                        <button data-toggle="modal" data-target="#addModalPlanning"  class="dropdown-item" href="#"><span class="icon mr-2"><i class="fa fa-calendar-alt"></i></span>Ajouter un planning</button>
+                                        <button data-toggle="modal" data-target="#editModalEleve" class="dropdown-item"
+                                                href="#"><span class="icon mr-2"><i class="fa fa-edit"></i></span>Modifier
+                                            l'élève
+                                        </button>
+                                        <button data-toggle="modal" data-target="#deleteModalEleve"
+                                                class="dropdown-item" href="#"><span class="icon mr-2"><i
+                                                    class="fa fa-trash-alt"></i></span>Supprimer l'élève
+                                        </button>
+                                        <button data-toggle="modal" data-target="#addModalBilan" class="dropdown-item"
+                                                href="#"><span class="icon mr-2"><i class="fa fa-file-alt"></i></span>Ajouter
+                                            un bilan
+                                        </button>
+                                        <button data-toggle="modal" data-target="#addModalPlanning"
+                                                class="dropdown-item" href="#"><span class="icon mr-2"><i
+                                                    class="fa fa-calendar-alt"></i></span>Ajouter un planning
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -33,11 +44,18 @@
                             <ul class="list-group">
                                 <li class="list-group-item atom text-white"><h5>Informations générales</h5>
                                 </li>
-                                <li class="list-group-item"><span class="font-weight-bold">Age</span> : {{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->diffInYears($eleve->dateNaissance) }} ans</li>
-                                <li class="list-group-item"><span class="font-weight-bold">Sexe</span> : {{ $eleve->sexe}}</li>
-                                <li class="list-group-item"><span class="font-weight-bold">Classe</span> : {{ $eleve->classe  }}</li>
-                                <li class="list-group-item"><span class="font-weight-bold">Ville</span> : {{ $eleve->ville  }}</li>
-                                <li class="list-group-item"><span class="font-weight-bold">Etablissement</span> : {{ $eleve->etablissement->full_name  }}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Age</span>
+                                    : {{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->diffInYears($eleve->dateNaissance) }}
+                                    ans
+                                </li>
+                                <li class="list-group-item"><span class="font-weight-bold">Sexe</span>
+                                    : {{ $eleve->sexe}}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Classe</span>
+                                    : {{ $eleve->classe  }}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Ville</span>
+                                    : {{ $eleve->ville  }}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Etablissement</span>
+                                    : {{ $eleve->etablissement->full_name  }}</li>
                             </ul>
                         </div>
 
@@ -45,11 +63,15 @@
                             <ul class="list-group">
                                 <li class="list-group-item atom text-white"><h5>Activité</h5>
                                 </li>
-                                <li class="list-group-item"><span class="font-weight-bold">Nombre de bilan</span> : {{ sizeof($eleve->bilans) }}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Nombre de bilan</span>
+                                    : {{ sizeof($eleve->bilans) }}</li>
 
-                                <li class="list-group-item"><span class="font-weight-bold">Nombre de planning</span> : {{ sizeof($eleve->plannings) }}</li>
-                                <li class="list-group-item"><span class="font-weight-bold">Dernière activité</span> : {{ \Carbon\Carbon::parse($eleve->updated_at)->format('d/m/Y')  }}</li>
-                                <li class="list-group-item"><span class="font-weight-bold">Educateur</span> : {{ $eleve->educateur->nom }} {{ $eleve->educateur->prenom }}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Nombre de planning</span>
+                                    : {{ sizeof($eleve->plannings) }}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Dernière activité</span>
+                                    : {{ \Carbon\Carbon::parse($eleve->updated_at)->format('d/m/Y')  }}</li>
+                                <li class="list-group-item"><span class="font-weight-bold">Educateur</span>
+                                    : {{ $eleve->educateur->nom }} {{ $eleve->educateur->prenom }}</li>
                             </ul>
                         </div>
                     </div>
@@ -80,32 +102,40 @@
                                                 <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
                                             @endif
 
-                                            <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }} jours</td>
+                                            <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }}
+                                                jours
+                                            </td>
                                             <td>{{ \Illuminate\Support\Str::limit($bilan->rapport, $limit = 50, $end = ' [...]') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($bilan->updated_at)->format('d/m/Y')  }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-success" data-toggle="modal" data-target="#showModal{{ $bilan->id }}">
+                                                <button class="btn btn-success" data-toggle="modal"
+                                                        data-target="#showModal{{ $bilan->id }}">
                                                     <span class="icon"><i class="fas fa-search"></i></span>
                                                 </button>
                                                 @if(!isset($bilan->planning))
-                                                    <button class="btn btn-dark" data-toggle="modal" data-target="#addModalPlanning{{ $bilan->id }}">
+                                                    <button class="btn btn-dark" data-toggle="modal"
+                                                            data-target="#addModalPlanning{{ $bilan->id }}">
                                                         <span class="icon"><i class="fa fa-plus"></i></span>
                                                     </button>
                                                 @endif
-                                                <button class="btn btn-info" data-toggle="modal" data-target="#editModal{{ $bilan->id }}">
+                                                <button class="btn btn-info" data-toggle="modal"
+                                                        data-target="#editModal{{ $bilan->id }}">
                                                     <span class="icon"><i class="fas fa-edit"></i></span>
                                                 </button>
-                                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $bilan->id }}">
+                                                <button class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#deleteModal{{ $bilan->id }}">
                                                     <span class="icon"><i class="fas fa-trash-alt"></i></span>
                                                 </button>
                                             </td>
                                         </tr>
                                         <div class="no-height">
-                                            <div class="modal fade" tabindex="-1" role="dialog" id="showModal{{ $bilan->id }}" aria-hidden="true">
+                                            <div class="modal fade" tabindex="-1" role="dialog"
+                                                 id="showModal{{ $bilan->id }}" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5><i class="fa fa-file-alt mr-3"></i>Bilan de {{ $eleve->nom }} {{ $eleve->prenom }}
+                                                            <h5><i class="fa fa-file-alt mr-3"></i>Bilan
+                                                                de {{ $eleve->nom }} {{ $eleve->prenom }}
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -117,19 +147,24 @@
                                                 </div>
                                             </div>
                                             @if(!isset($bilan->planning))
-                                                <div class="modal fade" tabindex="-1" role="dialog" id="addModalPlanning{{ $bilan->id }}" aria-hidden="true">
+                                                <div class="modal fade" tabindex="-1" role="dialog"
+                                                     id="addModalPlanning{{ $bilan->id }}" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5><i class="fa fa-file-alt mr-3"></i>Ajouter un planning</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                <h5><i class="fa fa-file-alt mr-3"></i>Ajouter un
+                                                                    planning</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                                </button>
                                                             </div>
                                                             @include('planning.form', ['typeForm'=>"create", 'bilan' => $bilan, "eleve"=>$eleve])
                                                         </div>
                                                     </div>
                                                 </div>
                                             @endif
-                                            <div class="modal fade" tabindex="-1" role="dialog" id="editModal{{ $bilan->id }}" aria-hidden="true">
+                                            <div class="modal fade" tabindex="-1" role="dialog"
+                                                 id="editModal{{ $bilan->id }}" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -144,7 +179,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal{{ $bilan->id }}" aria-hidden="true">
+                                            <div class="modal fade" tabindex="-1" role="dialog"
+                                                 id="deleteModal{{ $bilan->id }}" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -184,14 +220,32 @@
                                     @foreach($eleve->plannings as $key => $planning)
                                         <tr id="{{ $planning->id  }}">
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }} jours</td>
-
-                                            {{ $planning->jours }}
-
-                                            {{--
-                                            <td>{{ count(array_search(['matinRetard'=>1, 'apremRetard' => 1], $planning->jours))}} retards</td>
-                                            --}}
-                                            <td>0 absence</td>
+                                            <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }}
+                                                jours
+                                            </td>
+                                            @php
+                                                $nbJourAbsent = 0
+                                            @endphp
+                                            @foreach($planning->jours as $jour)
+                                                @if($jour->matinAbsent == 1 or $jour->apremAbsent == 1)
+                                                    @php
+                                                        $nbJourAbsent += 1
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            <td>{{ $nbJourAbsent }} absence(s)</td>
+                                            @php
+                                                $nbJourRetard = 0
+                                            @endphp
+                                            @foreach($planning->jours as $jour)
+                                                @if($jour->matinRetard == 1 or $jour->apremRetard == 1)
+                                                    {{ $nbJourRetard += 1 }}
+                                                    @php
+                                                        $nbJourRetard += 1
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            <td>{{ $nbJourRetard }} retard(s)</td>
                                             <td class="text-center">
                                                 <button class="btn btn-success" data-toggle="modal" data-target="">
                                                     <span class="icon"><i class="fas fa-search"></i></span>
@@ -214,44 +268,7 @@
             </div>
         </div>
     </div>
-    <div style="display: flex; justify-content: flex-end; flex-direction: column; position: absolute; top: 60px; right: 15px;">
-        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
-            <div class="toast-header">
-                <strong class="mr-auto">Bootstrap</strong>
-                <small class="text-muted">11 mins ago</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
-            <div class="toast-header">
-                <strong class="mr-auto">Bootstrap</strong>
-                <small class="text-muted">11 mins ago</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
-            <div class="toast-header">
-                <strong class="mr-auto">Bootstrap</strong>
-                <small class="text-muted">11 mins ago</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-    </div>
+
 @endsection
 
 @section('noHeight')
@@ -313,36 +330,74 @@
     </div>
 @endsection
 
-
-
 @section('javascript')
-<script>
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-
-    $(document).ready(function(){
-        $('.toast').toast({"delay": 2000});
-        $('.toast').toast("show");
-    })
-</script>
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 @endsection
 
 
 {{--
+    $(document).ready(function(){
+        $('.toast').toast({"delay": 2000});
+        $('.toast').toast("show");
+    })
+--}}
 
-                                            --}}
+
+{{--
+    <div style="display: flex; justify-content: flex-end; flex-direction: column; position: absolute; top: 60px; right: 15px;">
+        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
+            <div class="toast-header">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">11 mins ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
+            <div class="toast-header">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">11 mins ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
+            <div class="toast-header">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">11 mins ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+--}}
