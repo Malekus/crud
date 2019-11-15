@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bilan;
+use App\Jour;
 use App\Http\Requests\PlanningRequest;
 use App\Planning;
 use Carbon\Carbon;
@@ -34,8 +35,30 @@ class PlanningController extends Controller
         }
         $planning = $request->isMethod('put') ? Planning::findOrFail($request->id) : new Planning(['dateDebut'=>$request->get('dateDebut'), 'dateFin'=>$request->get('dateFin')]);
         $bilan = Bilan::find($request->get('bilan_id'));
+
         $planning->bilan_id = $bilan->id;
         $planning->save();
+
+
+        for($i = 0; $i < Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut); $i++ ){
+
+            $r = [];
+            $r['dateExclu']= Carbon::parse($bilan->dateDebut)->addDays($i);
+            if($request->get('absent_'.($i+1)) == 0){
+                $r['matinAbsent'] = 0;
+                $r['apremAbsent'] = 0;
+            }
+            if($request->get('retard_'.($i+1)) == 0){
+                $r['matinRetard'] = 0;
+                $r['apremRetard'] = 0;
+            }
+
+            $jour = new Jour($r);
+            $jour->planning()->associate($planning);
+            $jour->save();
+
+        }
+
         return redirect(route('eleve.show', $bilan->eleve->id));
 
     }

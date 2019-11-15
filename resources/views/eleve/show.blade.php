@@ -185,7 +185,12 @@
                                         <tr id="{{ $planning->id  }}">
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }} jours</td>
-                                            <td>5 retards</td>
+
+                                            {{ $planning->jours }}
+
+                                            {{--
+                                            <td>{{ count(array_search(['matinRetard'=>1, 'apremRetard' => 1], $planning->jours))}} retards</td>
+                                            --}}
                                             <td>0 absence</td>
                                             <td class="text-center">
                                                 <button class="btn btn-success" data-toggle="modal" data-target="">
