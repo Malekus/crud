@@ -9,6 +9,7 @@ use App\Planning;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Symfony\Component\HttpFoundation\Request;
+use function Psy\bin;
 
 class PlanningController extends Controller
 {
@@ -18,7 +19,6 @@ class PlanningController extends Controller
             $carbon = Carbon::now()->format('Y');
             $period = CarbonPeriod::create($carbon.'-01-01', ($carbon+1).'-01-01');
             $dates = $this->getOnlyMonth($period->toArray());
-//            dd($dates);
             return view('planning.index', compact('dates'));
         }
 
@@ -29,59 +29,23 @@ class PlanningController extends Controller
 
     public function store(PlanningRequest $request)
     {
-        if ($request->ajax()) {
-            $planning = Planning::create($request->all());
-            return response()->json($planning, 201);
-        }
-        $planning = $request->isMethod('put') ? Planning::findOrFail($request->id) : new Planning(['dateDebut'=>$request->get('dateDebut'), 'dateFin'=>$request->get('dateFin')]);
-        $bilan = Bilan::find($request->get('bilan_id'));
+        $keys = array_keys($request->except(['_token', 'bilan_id', 'dateDebut', 'dateFin']));
 
-        $planning->bilan_id = $bilan->id;
+        $planning = new Planning(['dateDebut'=>$request->get('dateDebut'), 'dateFin'=>$request->get('dateFin')]);
+        $bilan = Bilan::find($request->get('bilan_id'));
+        $planning->bilan()->associate($bilan); // = $bilan->id;
         $planning->save();
 
-
-        for($i = 0; $i < Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut); $i++ ){
-
-            $r = [];
-            $r['dateExclu']= Carbon::parse($bilan->dateDebut)->addDays($i);
-            if($request->get('absent_'.($i+1)) == 0){
-                $r['matinAbsent'] = 0;
-                $r['apremAbsent'] = 0;
+        for($i = 0; $i < Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut); $i++ ) {
+            $r = ['dateExclu' => Carbon::parse($bilan->dateDebut)->addDays($i), 'matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
+            foreach ($keys as $key => $value) {
+                if (preg_match("/_".$i."/", $value)) {
+                    $r[explode("_", $value)[0]] = 1;
+                }
             }
-            elseif ($request->get('absent_'.($i+1)) == 1){
-                $r['matinAbsent'] = 1;
-                $r['apremAbsent'] = 0;
-            }
-            elseif ($request->get('absent_'.($i+1)) == 2){
-                $r['matinAbsent'] = 0;
-                $r['apremAbsent'] = 1;
-            }
-            else{
-                $r['matinAbsent'] = 1;
-                $r['apremAbsent'] = 1;
-            }
-
-            if($request->get('retard_'.($i+1)) == 0){
-                $r['matinRetard'] = 0;
-                $r['apremRetard'] = 0;
-            }
-            elseif ($request->get('retard_'.($i+1)) == 1){
-                $r['matinRetard'] = 1;
-                $r['apremRetard'] = 0;
-            }
-            elseif ($request->get('retard_'.($i+1)) == 2){
-                $r['matinRetard'] = 0;
-                $r['apremRetard'] = 1;
-            }
-            else{
-                $r['matinRetard'] = 1;
-                $r['apremRetard'] = 1;
-            }
-
             $jour = new Jour($r);
             $jour->planning()->associate($planning);
             $jour->save();
-
         }
 
         return redirect(route('eleve.show', $bilan->eleve->id));
@@ -98,9 +62,14 @@ class PlanningController extends Controller
     public function update(PlanningRequest $request, $id)
     {
         $planning = Planning::findOrFail($id);
-        $planning->update($request->all());
+        $keys = array_keys($request->except(['_token', '_method']));
+        foreach ($keys as $key){
+            dd($planning, $request->all(), $key, $keys); // $jour->update(['matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0])
+        }
 
-        return response()->json($planning, 200);
+
+
+        return redirect(route('eleve.show', $planning->bilan->eleve->id));
     }
 
     private function getOnlyMonth($data)
@@ -149,8 +118,8 @@ class PlanningController extends Controller
 
     public function destroy($id)
     {
+        $planning = Planning::find($id);
         Planning::destroy($id);
-
-        return response()->json(null, 204);
+        return redirect(route('eleve.show', $planning->bilan->eleve->id));
     }
 }

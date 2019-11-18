@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'EleveController@index');
 
 
 Route::get('/eductateur', 'EducateurController@index')

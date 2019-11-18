@@ -224,6 +224,17 @@
                                                 jours
                                             </td>
                                             @php
+                                                $nbJourRetard = 0
+                                            @endphp
+                                            @foreach($planning->jours as $jour)
+                                                @if($jour->matinRetard == 1 or $jour->apremRetard == 1)
+                                                    @php
+                                                        $nbJourRetard += 1
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            <td>{{ $nbJourRetard }} retard(s)</td>
+                                            @php
                                                 $nbJourAbsent = 0
                                             @endphp
                                             @foreach($planning->jours as $jour)
@@ -234,29 +245,64 @@
                                                 @endif
                                             @endforeach
                                             <td>{{ $nbJourAbsent }} absence(s)</td>
-                                            @php
-                                                $nbJourRetard = 0
-                                            @endphp
-                                            @foreach($planning->jours as $jour)
-                                                @if($jour->matinRetard == 1 or $jour->apremRetard == 1)
-                                                    {{ $nbJourRetard += 1 }}
-                                                    @php
-                                                        $nbJourRetard += 1
-                                                    @endphp
-                                                @endif
-                                            @endforeach
-                                            <td>{{ $nbJourRetard }} retard(s)</td>
                                             <td class="text-center">
-                                                <button class="btn btn-success" data-toggle="modal" data-target="">
+                                                <button class="btn btn-success" data-toggle="modal" data-target="#showModalPlanning{{ $planning->id }}">
                                                     <span class="icon"><i class="fas fa-search"></i></span>
                                                 </button>
-                                                <button class="btn btn-info" data-toggle="modal" data-target="">
+                                                <button class="btn btn-info" data-toggle="modal" data-target="#editModalPlanning{{ $planning->id }}">
                                                     <span class="icon"><i class="fas fa-edit"></i></span>
+                                                </button>
+                                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModalPlanning{{ $planning->id }}">
+                                                    <span class="icon"><i class="fas fa-trash-alt"></i></span>
                                                 </button>
                                             </td>
                                         </tr>
                                         <div class="no-height">
-
+                                            <div class="modal fade" tabindex="-1" role="dialog"  id="showModalPlanning{{ $planning->id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5><i class="fa fa-file-alt mr-3"></i>Planning de {{ $eleve->nom }} {{ $eleve->prenom }}
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                            @include('planning.form', ['typeForm'=>"show", 'model' => $planning])
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" tabindex="-1" role="dialog" id="editModalPlanning{{ $planning->id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5><i class="fa fa-file-alt mr-3"></i>Modifier le planning
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                            @include('planning.form', ['typeForm'=>"edit", 'model' => $planning])
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" tabindex="-1" role="dialog" id="deleteModalPlanning{{ $planning->id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5><i class="fa fa-file-alt mr-3"></i>Supprimer le planning
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        @include('planning.form', ['typeForm'=>"delete", 'model' => $planning])
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     @endforeach
                                     </tbody>

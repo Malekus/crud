@@ -11,7 +11,7 @@ class Planning extends Model
 
     public function bilan()
     {
-        return $this->hasOne(Bilan::class);
+        return $this->belongsTo(Bilan::class);
     }
 
     public function jours()

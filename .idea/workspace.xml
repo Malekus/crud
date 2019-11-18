@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Bilan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Bilan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Eleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Eleve.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Planning.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Planning.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/eleve/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/planning/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/planning/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,6 +137,8 @@
       <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server" />
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
       <path value="$PROJECT_DIR$/vendor/maddhatter/laravel-fullcalendar" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
     </include_path>
   </component>
   <component name="ProjectId" id="1TA8baAoei2IGD5Lwoqxv0S8kc8" />
@@ -139,7 +150,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -189,8 +200,16 @@
       <workItem from="1573668246577" duration="5652000" />
       <workItem from="1573711886523" duration="3575000" />
       <workItem from="1573728711386" duration="8133000" />
+      <workItem from="1573891254328" duration="1201000" />
+      <workItem from="1573901369282" duration="5160000" />
+      <workItem from="1573923361125" duration="11769000" />
+      <workItem from="1573986374987" duration="13037000" />
+      <workItem from="1574055667107" duration="1216000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -215,23 +234,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>255</line>
+          <line>345</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>240</line>
+          <line>330</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>126</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>141</line>
-          <option name="timeStamp" value="9" />
+          <url>file://$PROJECT_DIR$/resources/views/planning/form.blade.php</url>
+          <line>1</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
