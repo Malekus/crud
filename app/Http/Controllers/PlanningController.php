@@ -64,11 +64,10 @@ class PlanningController extends Controller
         $planning = Planning::findOrFail($id);
         $keys = array_keys($request->except(['_token', '_method']));
         foreach ($keys as $key){
-            dd($planning, $request->all(), $key, $keys); // $jour->update(['matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0])
+            $r = ['matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
+            $r[] = $request->get($key);
+            $planning->jours[explode('_', $key)[1]]->update([explode('_', $key)[0] => $request->get($key)]);
         }
-
-
-
         return redirect(route('eleve.show', $planning->bilan->eleve->id));
     }
 

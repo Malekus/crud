@@ -101,7 +101,6 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         </div>
-
     @endif
 
     @if($typeForm == "edit")
@@ -115,10 +114,12 @@
                     {!! Form::label('retard_'.$key, 'Retard', ['class' => 'col-lg-2 col-form-label']) !!}
                     <div class="col-lg-6">
                         <div class="form-check form-check-inline" style="height: 100%">
+                            <input type="hidden" value="0" name="{{'matinRetard_'.$key}}">
                             <input class="form-check-input" type="checkbox" name="{{'matinRetard_'.$key}}" value="1" @if($jour->matinRetard == 1) checked @endif>
                             <label class="form-check-label" for="{{'matinRetard_'.$key}}">matin</label>
                         </div>
                         <div class="form-check form-check-inline" style="height: 100%">
+                            <input type="hidden" value="0" name="{{'apremRetard_'.$key}}">
                             <input class="form-check-input" type="checkbox" name="{{'apremRetard_'.$key}}" value="1" @if($jour->apremRetard == 1) checked @endif>
                             <label class="form-check-label" for="{{'apremRetard_'.$key}}">après-midi</label>
                         </div>
@@ -128,10 +129,12 @@
                     {!! Form::label('absent_'.$key, 'Absent', ['class' => 'col-lg-2 col-form-label']) !!}
                     <div class="col-lg-6">
                         <div class="form-check form-check-inline" style="height: 100%">
+                            <input type="hidden" value="0" name="{{'matinAbsent_'.$key}}">
                             <input class="form-check-input" type="checkbox" name="{{'matinAbsent_'.$key}}" value="1" @if($jour->matinAbsent == 1) checked @endif>
                             <label class="form-check-label" for="{{'matinAbsent_'.$key}}">matin</label>
                         </div>
                         <div class="form-check form-check-inline" style="height: 100%">
+                            <input type="hidden" value="0" name="{{'apremAbsent_'.$key}}">
                             <input class="form-check-input" type="checkbox" name="{{'apremAbsent_'.$key}}" value="1" @if($jour->apremAbsent == 1) checked @endif>
                             <label class="form-check-label" for="{{'apremAbsent_'.$key}}">après-midi</label>
                         </div>
