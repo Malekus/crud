@@ -21,7 +21,6 @@ class PlanningController extends Controller
             $dates = $this->getOnlyMonth($period->toArray());
             return view('planning.index', compact('dates'));
         }
-
         $period = CarbonPeriod::create($request->get('search').'-01-01', ($request->get('search')+1).'-01-01');
         $dates = $this->getOnlyMonth($period->toArray());
         return view('planning.index', compact('dates'));
@@ -47,9 +46,7 @@ class PlanningController extends Controller
             $jour->planning()->associate($planning);
             $jour->save();
         }
-
         return redirect(route('eleve.show', $bilan->eleve->id));
-
     }
 
     public function show($id)

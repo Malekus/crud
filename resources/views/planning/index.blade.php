@@ -45,9 +45,17 @@
                                     <div><p>décembre</p></div>
                                 </div>
                                 <div class="partMonthDays">
-                                    <div>@for($i = 1; $i<= 31; $i++) <span>{{$i}}</span>@endfor</div>
+                                    <div>@for($i = 1; $i<= 31; $i++) <span><p>{{$i}}</p></span>@endfor</div>
                                     @foreach($dates as $date)
-                                        <div>@foreach($date as $name) <span class="jour" data-id="{{ $name[0] }}">{{ $name[1] }}</span>@endforeach</div>
+                                        <div>
+                                            @foreach($date as $key => $name)
+                                                @if($name[1] == 'S' or $name[1] == 'D')
+                                                    <span class="jour weekendDay" data-id="{{ $name[0] }}"><p>{{ $name[1] }}</p></span>
+                                                @else
+                                                    <span class="jour" data-id="{{ $name[0] }}"><p>{{ $name[1] }}</p></span>
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -94,6 +102,32 @@
 
         .partMonthDays div span:hover {
             background-color: #D9DEE4;
+        }
+
+        .weekendDay {
+            background-color: #D9DEE4;
+            color: white;
+        }
+
+        .todayDay {
+            color: red;
+            border: 1px red solid;
+        }
+
+        .partMonthName p, .partMonthDays p {
+            margin: 0;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .partMonthName div, .partMonthDays span{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
     </style>
