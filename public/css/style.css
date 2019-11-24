@@ -1,6 +1,9 @@
 :root {
     --lightColorTheme: #3c6382;
     --darkColorTheme: #60a3bc;
+    --bagnolet: #3498db;
+    --epinay: #2ecc71;
+    --stains: #e67e22;
 }
 
 * {

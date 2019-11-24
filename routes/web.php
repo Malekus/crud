@@ -28,3 +28,9 @@ Route::get('/eleve/{id}', 'EleveController@show')
 
 Route::get('/planning', 'PlanningController@index')
     ->name('planning.index');
+
+Route::post('/ajax/jour', 'AjaxController@jour')
+    ->name('ajax.jour');
+
+Route::get('/ajax/test', 'AjaxController@test')
+    ->name('ajax.test');

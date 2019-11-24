@@ -19,10 +19,12 @@ class PlanningController extends Controller
             $carbon = Carbon::now()->format('Y');
             $period = CarbonPeriod::create($carbon.'-01-01', ($carbon+1).'-01-01');
             $dates = $this->getOnlyMonth($period->toArray());
-            return view('planning.index', compact('dates'));
+            $jours = $this->daysToArray(Jour::with('planning.bilan.eleve.etablissement')->where("dateExclu", ">=", $carbon.'-01-01')->where("dateExclu", "<=", ($carbon+1).'-01-01')->get());
+            return view('planning.index', compact(['dates', 'jours']));
         }
         $period = CarbonPeriod::create($request->get('search').'-01-01', ($request->get('search')+1).'-01-01');
         $dates = $this->getOnlyMonth($period->toArray());
+        dd($dates);
         return view('planning.index', compact('dates'));
     }
 
@@ -73,11 +75,11 @@ class PlanningController extends Controller
         $r = [];
         foreach ($data as $date){
             if(array_key_exists($date->format('m'), $r)){
-                array_push($r[$date->format('m')], [$date->format('d/m/Y'), $this->daysEnToFr($date->format('l'))]);
+                array_push($r[$date->format('m')], [$date->format('Y-m-d'), $this->daysEnToFr($date->format('l'))]);
             }
             else{
                 $r[$date->format('m')] = array();
-                array_push($r[$date->format('m')], [$date->format('d/m/Y'), $this->daysEnToFr($date->format('l'))]);
+                array_push($r[$date->format('m')], [$date->format('Y-m-d'), $this->daysEnToFr($date->format('l'))]);
             }
         }
         array_pop($r['01']);
@@ -91,6 +93,14 @@ class PlanningController extends Controller
             }
         }
         return $r;
+    }
+
+
+    public function destroy($id)
+    {
+        $planning = Planning::find($id);
+        Planning::destroy($id);
+        return redirect(route('eleve.show', $planning->bilan->eleve->id));
     }
 
     private function daysEnToFr($days){
@@ -112,10 +122,32 @@ class PlanningController extends Controller
         }
     }
 
-    public function destroy($id)
-    {
-        $planning = Planning::find($id);
-        Planning::destroy($id);
-        return redirect(route('eleve.show', $planning->bilan->eleve->id));
+    private function daysToArray($jours) {
+        $r = [];
+        foreach ($jours as $jour){
+            if(!array_key_exists($jour->dateExclu, $r)){
+                $r[$jour->dateExclu] = [$jour->ville];
+            }
+            else{
+                if(!in_array($jour->ville, $r[$jour->dateExclu])) array_push($r[$jour->dateExclu], $jour->ville);
+            }
+        }
+
+        $d = [];
+        foreach ($r as $key => $data){
+            if(count($data) == 3){
+                $d[$key] = "bagnoletEpinayStains";
+            }
+            elseif (count($data) == 1){
+                $d[$key] = strtolower($data[0]);
+            }
+            else{
+                asort($data);
+                $d[$key] = strtolower($data[0])."".ucfirst($data[1]);
+            }
+        }
+
+        return $d;
     }
+
 }
