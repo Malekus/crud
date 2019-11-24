@@ -60,7 +60,7 @@
                                                         <span class="jour weekendDay"
                                                               data-id="{{ $name[0] }}"><p>{{ $name[1] }}</p></span>
                                                     @else
-                                                        <span class="jour @if(array_key_exists($name[0], $jours)){{ $jours[$name[0]] }}@endif" data-id="{{ $name[0] }}"><p>{{ $name[1] }}</p></span>
+                                                        <span class="jour @if(array_key_exists($name[0], $jours)){{$jours[$name[0]]}} @else nothingToday @endif" data-id="{{ $name[0] }}"><p>{{ $name[1] }}</p></span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -215,6 +215,7 @@
             });
 
             $('.partMonthDays').on('click', '.jour', function () {
+                if($(this).hasClass('nothingToday')) return false;
                 var date = $(this).attr('data-id');
                 var url = '{{ url('/ajax/jour')}}';
                 //url = url.replace(':date', date);
