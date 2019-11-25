@@ -34,3 +34,6 @@ Route::post('/ajax/jour', 'AjaxController@jour')
 
 Route::get('/ajax/test', 'AjaxController@test')
     ->name('ajax.test');
+
+Route::get('/statistique', 'StatistiqueController@index')
+    ->name('statistique.index');

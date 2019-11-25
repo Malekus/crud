@@ -20,9 +20,8 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <span><i class="fa fa-chart-bar"></i></span>
-
+                <a href="{{ route('statistique.index') }}">
+                <span><i class="fa fa-chart-bar"></i></span>
                     <span>Statistique</span>
                 </a>
             </li>
