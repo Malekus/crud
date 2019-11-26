@@ -21,7 +21,11 @@ class StatistiqueController extends Controller
 
     public function makeChart($date, $type = null)
     {
-        if ($date == null) $date = Carbon::now()->format('Y');
+        if ($date == null) {$date = Carbon::now()->format('Y');}
+        if (strpos($date, '/') !== false) {
+            $ex = explode("/", $date);
+            $date = $ex[1]."-".$ex[0];
+        }
 
         $idGraphe = $type.'Chart';
 
@@ -62,7 +66,7 @@ class StatistiqueController extends Controller
                           }
                         },
                         title: {
-                            text: 'Nombre d\'eleve en ',
+                            text: 'Nombre d\'élève exclu ".strval($date)."',
                         },
                         xAxis: {
                            type: 'category',
@@ -149,7 +153,7 @@ class StatistiqueController extends Controller
                           }
                         },
                         title: {
-                            text: 'Nombre d\'eleve en ',
+                            text: 'Nombre d\'élève exclu ',
                         },
                         xAxis: {
                            type: 'category',
@@ -240,7 +244,7 @@ class StatistiqueController extends Controller
                           }
                         },
                         title: {
-                            text: 'Nombre d\'eleve en ',
+                            text: 'Nombre d\'élève exclu ',
                         },
                         xAxis: {
                            type: 'category',
@@ -347,7 +351,7 @@ class StatistiqueController extends Controller
                           }
                         },
                         title: {
-                            text: 'Nombre d\'eleve en ',
+                            text: 'Nombre d\'élève exclu ',
                         },
                         xAxis: {
                            type: 'category',

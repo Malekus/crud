@@ -3,8 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Bilan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Bilan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Eleve.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Eleve.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StatistiqueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StatistiqueController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Planning.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Planning.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/JourFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/JourFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/JourTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/JourTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/eleve/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/statistique/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/statistique/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,6 +217,7 @@
       <workItem from="1574507549226" duration="21418000" />
       <workItem from="1574628098257" duration="8074000" />
       <workItem from="1574709906336" duration="9018000" />
+      <workItem from="1574745697743" duration="3582000" />
     </task>
     <servers />
   </component>
@@ -249,7 +257,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/statistique/index.blade.php</url>
-          <line>27</line>
+          <line>28</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

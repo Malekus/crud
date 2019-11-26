@@ -6,7 +6,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Jour::class, function (Faker $faker) {
     return [
-        'dateExclu' => $faker->dateTimeBetween($startDate = '-8 days', $endDate = '-1 days'),
+        'dateExclu' => $faker->dateTimeBetween($startDate = '-90 days', $endDate = '-1 days'),
         'matinAbsent' => $faker->randomElement(['0', '1']),
         'matinRetard' => $faker->randomElement(['0', '1']),
         'apremAbsent' => $faker->randomElement(['0', '1']),

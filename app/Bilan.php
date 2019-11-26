@@ -12,6 +12,7 @@ class Bilan extends Model
     protected static function boot()
     {
         parent::boot();
+
         self::updating(function ($model) {
             if (Carbon::parse($model->dateFin)->diffInDays($model->dateDebut) < count($model->planning->jours)) {
                 $model->planning()->delete();
@@ -25,7 +26,6 @@ class Bilan extends Model
                     $jour->save();
                 }
             }
-
             $model->planning()->update(['dateDebut' => $model->dateDebut, 'dateFin' => $model->dateFin]);
             if (Carbon::parse($model->dateFin)->diffInDays($model->dateDebut) > count($model->planning->jours)) {
                 for ($i = 0; $i < Carbon::parse($model->dateFin)->diffInDays($model->dateDebut); $i++) {
@@ -37,8 +37,23 @@ class Bilan extends Model
                     }
                 }
             }
-
         });
+
+        self::created(function ($model) {
+            $model->eleve->updated_at = Carbon::now();
+            $model->eleve->save();
+        });
+
+        self::updated(function ($model) {
+            $model->eleve->updated_at = Carbon::now();
+            $model->eleve->save();
+        });
+
+        self::deleted(function ($model) {
+            $model->eleve->updated_at = Carbon::now();
+            $model->eleve->save();
+        });
+
     }
 
     public function eleve()

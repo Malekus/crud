@@ -12,7 +12,7 @@ class JourTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Jour::class, 200)->create();
+        factory(Jour::class, 300)->create();
     }
 }
 
