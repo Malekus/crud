@@ -1,39 +1,34 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::middleware('auth')->group(function () {
+    Route::get('/', 'EleveController@index');
 
-Route::get('/', 'EleveController@index');
+    Route::get('/eductateur', 'EducateurController@index')
+        ->name('educateur.index');
 
+    Route::get('/eductateur/create', 'EducateurController@create')
+        ->name('educateur.create');
 
-Route::get('/eductateur', 'EducateurController@index')
-    ->name('educateur.index');
+    Route::get('/eleve', 'EleveController@index')
+        ->name('eleve.index');
 
-Route::get('/eductateur/create', 'EducateurController@create')
-    ->name('educateur.create');
+    Route::get('/eleve/{id}', 'EleveController@show')
+        ->name('eleve.show');
 
-Route::get('/eleve', 'EleveController@index')
-    ->name('eleve.index');
+    Route::get('/planning', 'PlanningController@index')
+        ->name('planning.index');
 
-Route::get('/eleve/{id}', 'EleveController@show')
-    ->name('eleve.show');
+    Route::post('/ajax/jour', 'AjaxController@jour')
+        ->name('ajax.jour');
 
-Route::get('/planning', 'PlanningController@index')
-    ->name('planning.index');
+    Route::get('/ajax/test', 'AjaxController@test')
+        ->name('ajax.test');
 
-Route::post('/ajax/jour', 'AjaxController@jour')
-    ->name('ajax.jour');
+    Route::get('/statistique', 'StatistiqueController@index')
+        ->name('statistique.index');
+});
 
-Route::get('/ajax/test', 'AjaxController@test')
-    ->name('ajax.test');
+Auth::routes();
 
-Route::get('/statistique', 'StatistiqueController@index')
-    ->name('statistique.index');
+Route::get('/home', 'HomeController@index')->name('home');
+
