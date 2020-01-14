@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Eleve;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,20 +33,17 @@ class StatistiqueController extends Controller
         if($type == "sexe"){
 
             $breaks = "breaksSexe";
+            $models = ['femme', 'homme'];
+            $categories = $values = [];
 
-            $eleves = DB::table('eleves')
-                ->select(DB::raw('count(*) as nb, sexe as label'))
-                ->where('updated_at', 'like', '%' . $date . '%')
-                ->groupBy('sexe')
-                ->orderBy('sexe')
-                ->get()
-                ->toArray();
-
-            if(empty($eleves)) return;
-
-            $x = $this->getCategoriesValues($eleves);
-            $categories = $x[0];
-            $values = $x[1];
+            foreach ($models as $model) {
+                $tmp = DB::table('eleves')
+                    ->where('sexe', '=',$model)
+                    ->where('updated_at', 'like', '%'. $date .'%')
+                    ->count();
+                array_push($categories, ucfirst($model));
+                array_push($values, $tmp);
+            }
 
             $chart = "var ".$breaks." = new Map();\n    Highcharts.chart('" . $idGraphe . "', {
                         chart: {
@@ -66,7 +64,7 @@ class StatistiqueController extends Controller
                           }
                         },
                         title: {
-                            text: 'Nombre d\'élève exclu ".strval($date)."',
+                            text: 'Nombre d\'élèves exclus ".strval($date)."',
                         },
                         xAxis: {
                            type: 'category',
@@ -101,38 +99,28 @@ class StatistiqueController extends Controller
                                 dataLabels: { enabled: true }
                             }
                         },
-                        series: [{
-                            name: '". $categories[0] ."',
-                            data: [{name: '". $categories[0] ."', y:". $values[0] ."}],
-                        }, {
-                            name: '". $categories[1] ."',
-                            data: [{name: '". $categories[1] ."', y:". $values[1] ."}],
-
-                        }],
+                        series: ".$this->getSeries($categories, $values).",
                         credits: { enabled: false },
                         tooltip: { enabled: false },
                         });";
 
             return view('statistique.makeChart', ['idGraphe' => $idGraphe, 'chart' => $chart]);
-        }
+        } // fin graphe sexe
 
         if($type == "ville"){
 
             $breaks = "breaksVille";
+            $models = ['Stains', 'Epinay-sur-seine', 'Bagnolet'];
+            $categories = $values = [];
 
-            $villes = DB::table('eleves')
-                ->select(DB::raw('count(*) as nb, ville as label'))
-                ->where('updated_at', 'like', '%' . $date . '%')
-                ->groupBy('ville')
-                ->orderBy('ville')
-                ->get()
-                ->toArray();
-
-            if(empty($villes)) return;
-
-            $x = $this->getCategoriesValues($villes);
-            $categories = $x[0];
-            $values = $x[1];
+            foreach ($models as $model) {
+                $tmp = DB::table('eleves')
+                    ->where('ville', '=', $model)
+                    ->where('updated_at', 'like', '%'. $date .'%')
+                    ->count();
+                array_push($categories, ucfirst($model));
+                array_push($values, $tmp);
+            }
 
             $chart = "var ".$breaks." = new Map();\n    Highcharts.chart('" . $idGraphe . "', {
                         chart: {
@@ -153,7 +141,7 @@ class StatistiqueController extends Controller
                           }
                         },
                         title: {
-                            text: 'Nombre d\'élève exclu ',
+                            text: 'Nombre d\'élèves exclus',
                         },
                         xAxis: {
                            type: 'category',
@@ -188,29 +176,17 @@ class StatistiqueController extends Controller
                                 dataLabels: { enabled: true }
                             }
                         },
-                        series: [{
-                            name: '". $categories[0] ."',
-                            data: [{name: '". $categories[0] ."', y:". $values[0] ."}],
-                        }, {
-                            name: '". $categories[1] ."',
-                            data: [{name: '". $categories[1] ."', y:". $values[1] ."}],
-                        }
-                        , {
-                            name: '". $categories[2] ."',
-                            data: [{name: '". $categories[2] ."', y:". $values[2] ."}],
-                        }],
+                        series: ".$this->getSeries($categories, $values).",
                         credits: { enabled: false },
                         tooltip: { enabled: false },
                         });";
 
-
             return view('statistique.makeChart', ['idGraphe' => $idGraphe, 'chart' => $chart]);
-        }
+        } // fin graphe ville
 
         if($type == "etablissement"){
 
             $breaks = "breaksEtablissement";
-
             $etablissements = DB::table('eleves')
                 ->select(DB::raw('count(*) as nb, (select nom from etablissements where id = etablissement_id) as label'))
                 ->where('updated_at', 'like', '%' . $date . '%')
@@ -218,9 +194,7 @@ class StatistiqueController extends Controller
                 ->orderBy('etablissement_id')
                 ->get()
                 ->toArray();
-
             if(empty($etablissements)) return;
-
             $x = $this->getCategoriesValues($etablissements);
             $categories = $x[0];
             $values = $x[1];
@@ -244,7 +218,7 @@ class StatistiqueController extends Controller
                           }
                         },
                         title: {
-                            text: 'Nombre d\'élève exclu ',
+                            text: 'Nombre d\'élèves exclus',
                         },
                         xAxis: {
                            type: 'category',
@@ -278,59 +252,29 @@ class StatistiqueController extends Controller
                                 dataLabels: { enabled: true }
                             }
                         },
-                        series: [{
-                            name: '". $categories[0] ."',
-                            data: [{name: '". $categories[0] ."', y:". $values[0] ."}],
-                        }, {
-                            name: '". $categories[1] ."',
-                            data: [{name: '". $categories[1] ."', y:". $values[1] ."}],
-                        }
-                        , {
-                            name: '". $categories[2] ."',
-                            data: [{name: '". $categories[2] ."', y:". $values[2] ."}],
-                        }, {
-                            name: '". $categories[3] ."',
-                            data: [{name: '". $categories[3] ."', y:". $values[3] ."}],
-                        }
-                        , {
-                            name: '". $categories[4] ."',
-                            data: [{name: '". $categories[4] ."', y:". $values[4] ."}],
-                        }, {
-                            name: '". $categories[5] ."',
-                            data: [{name: '". $categories[5] ."', y:". $values[5] ."}],
-                        }
-                        , {
-                            name: '". $categories[6] ."',
-                            data: [{name: '". $categories[6] ."', y:". $values[6] ."}],
-                        }, {
-                            name: '". $categories[7] ."',
-                            data: [{name: '". $categories[7] ."', y:". $values[7] ."}],
-                        }],
+                        series: ". $this->getSeries($categories, $values) .",
                         credits: { enabled: false },
                         tooltip: { enabled: false },
                         });";
 
 
             return view('statistique.makeChart', ['idGraphe' => $idGraphe, 'chart' => $chart]);
-        }
+        } // fin graphe etablissement
 
         if($type == "classe"){
 
             $breaks = "breaksClasse";
+            $models = ['6ème', '5ème', '4ème', '3ème'];
+            $categories = $values = [];
 
-            $classes = DB::table('eleves')
-                ->select(DB::raw('count(*) as nb, classe as label'))
-                ->where('updated_at', 'like', '%' . $date . '%')
-                ->groupBy('classe')
-                ->orderBy('classe')
-                ->get()
-                ->toArray();
-
-            if(empty($classes)) return;
-
-            $x = $this->getCategoriesValues($classes);
-            $categories = $x[0];
-            $values = $x[1];
+            foreach ($models as $model) {
+                $tmp = DB::table('eleves')
+                    ->where('classe', '=', $model)
+                    ->where('updated_at', 'like', '%'. $date .'%')
+                    ->count();
+                array_push($categories, ucfirst($model));
+                array_push($values, $tmp);
+            }
 
             $chart = "var ".$breaks." = new Map();\n    Highcharts.chart('" . $idGraphe . "', {
                         chart: {
@@ -351,7 +295,7 @@ class StatistiqueController extends Controller
                           }
                         },
                         title: {
-                            text: 'Nombre d\'élève exclu ',
+                            text: 'Nombre d\'élèves exclus',
                         },
                         xAxis: {
                            type: 'category',
@@ -385,27 +329,14 @@ class StatistiqueController extends Controller
                                 dataLabels: { enabled: true }
                             }
                         },
-                        series: [{
-                            name: '". $categories[0] ."',
-                            data: [{name: '". $categories[0] ."', y:". $values[0] ."}],
-                        }, {
-                            name: '". $categories[1] ."',
-                            data: [{name: '". $categories[1] ."', y:". $values[1] ."}],
-                        }
-                        , {
-                            name: '". $categories[2] ."',
-                            data: [{name: '". $categories[2] ."', y:". $values[2] ."}],
-                        }, {
-                            name: '". $categories[3] ."',
-                            data: [{name: '". $categories[3] ."', y:". $values[3] ."}],
-                        }],
+                        series: ". $this->getSeries($categories, $values) .",
                         credits: { enabled: false },
                         tooltip: { enabled: false },
                         });";
 
 
             return view('statistique.makeChart', ['idGraphe' => $idGraphe, 'chart' => $chart]);
-        }
+        } // fin graphe classe
 
         return;
 
@@ -416,8 +347,18 @@ class StatistiqueController extends Controller
         $categories = $values = [];
         foreach ($data as $key => $value) {
             array_push($values, $value->nb);
-            array_push($categories, ucfirst($value->label));
+            array_push($categories, empty(ucfirst($value->label)) ? 'N/A' : ucfirst($value->label));
         }
         return [$categories, $values];
+    }
+
+    private function getSeries($categories, $values){
+        $series = '[';
+        for ($i = 0; $i < sizeof($categories); $i++){
+            $tmp = '{name: "'. $categories[$i] .'", data: [{name: "'. $categories[$i] .'", y:'. $values[$i] .'}],},';
+            $series .= $tmp;
+        }
+        $series = substr($series, 0, -1);
+        return $series .= ']';
     }
 }

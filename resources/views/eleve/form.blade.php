@@ -65,7 +65,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group row justify-content-center">
                 {!! Form::label('educateur', 'Educateur', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
@@ -141,7 +140,11 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('etablissement', 'Etablissement', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('etablissement', \App\Etablissement::all()->pluck('full_name', 'id'), $model->etablissement->id,['class' => 'form-control']) !!}
+                    @if($model->etablissement)
+                        {!! Form::select('etablissement', \App\Etablissement::all()->pluck('full_name', 'id'), $model->etablissement->id,['class' => 'form-control']) !!}
+                    @else
+                        {!! Form::select('etablissement', \App\Etablissement::all()->pluck('full_name', 'id'), null,['class' => 'form-control']) !!}
+                    @endif
                     <div class="invalid-feedback">Saisir un établissement</div>
                 </div>
             </div>

@@ -55,7 +55,7 @@
                                 <li class="list-group-item"><span class="font-weight-bold">Ville</span>
                                     : {{ $eleve->ville  }}</li>
                                 <li class="list-group-item"><span class="font-weight-bold">Etablissement</span>
-                                    : {{ $eleve->etablissement->full_name  }}</li>
+                                    : {{ empty($eleve->etablissement->full_name) ? "N/A" : $eleve->etablissement->full_name  }}</li>
                             </ul>
                         </div>
 

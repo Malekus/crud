@@ -26,7 +26,7 @@ class Jour extends Model
     }
 
     public function getVilleAttribute(){
-        return $this->planning->bilan->eleve->etablissement->ville;
+        return empty($this->planning->bilan->eleve->etablissement->ville) ? "N/A" : $this->planning->bilan->eleve->etablissement->ville;
     }
 
     public function getNomPrenomAttribute(){

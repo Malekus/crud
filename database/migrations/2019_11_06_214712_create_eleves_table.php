@@ -22,7 +22,7 @@ class CreateElevesTable extends Migration
             $table->string('classe');
             $table->string('ville');
             $table->integer('etablissement_id')->nullable()->unsigned()->index();
-            $table->foreign('etablissement_id')->references('id')->on('etablissements')->onDelete('set null');
+            $table->foreign('etablissement_id')->references('id')->on('etablissements')->onDelete('set null')->default('non défini');
             $table->integer('educateur_id')->nullable()->unsigned()->index();
             $table->foreign('educateur_id')->references('id')->on('educateurs')->onDelete('set null');
             $table->timestamps();
