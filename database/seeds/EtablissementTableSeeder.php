@@ -17,8 +17,8 @@ class EtablissementTableSeeder extends Seeder
         Etablissement::create(['nom' => 'Barbara', 'ville' => 'Stains']);
         Etablissement::create(['nom' => 'Collège Travail', 'ville' => 'Bagnolet']);
         Etablissement::create(['nom' => 'Collège Politzer', 'ville' => 'Bagnolet']);
-        Etablissement::create(['nom' => 'Jean Vigo', 'ville' => 'Epinay-sur-seine']);
-        Etablissement::create(['nom' => 'Roger Martin du Garo', 'ville' => 'Epinay-sur-seine']);
-        Etablissement::create(['nom' => 'Evariste Galois', 'ville' => 'Epinay-sur-seine']);
+        Etablissement::create(['nom' => 'Jean Vigo', 'ville' => 'Épinay-sur-Seine']);
+        Etablissement::create(['nom' => 'Roger Martin du Garo', 'ville' => 'Épinay-sur-Seine']);
+        Etablissement::create(['nom' => 'Evariste Galois', 'ville' => 'Épinay-sur-Seine']);
     }
 }
