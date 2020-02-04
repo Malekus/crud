@@ -59,7 +59,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('etablissement', 'Etablissement', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('etablissement', \App\Etablissement::all()->pluck('full_name', 'id'), null,['class' => 'form-control']) !!}
+                    {!! Form::select('etablissement', $etablissements, null,['class' => 'form-control']) !!}
                     <div class="invalid-feedback">
                         Saisir un nom
                     </div>
@@ -68,7 +68,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('educateur', 'Educateur', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('educateur', \App\Educateur::all()->pluck('full_name', 'id'), null,['class' => 'form-control']) !!}
+                    {!! Form::select('educateur', $educateurs, null,['class' => 'form-control']) !!}
                     <div class="invalid-feedback">Saisir un educateur</div>
                 </div>
             </div>
@@ -141,9 +141,9 @@
                 {!! Form::label('etablissement', 'Etablissement', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
                     @if($model->etablissement)
-                        {!! Form::select('etablissement', \App\Etablissement::all()->pluck('full_name', 'id'), $model->etablissement->id,['class' => 'form-control']) !!}
+                        {!! Form::select('etablissement', $etablissements, $model->etablissement->id,['class' => 'form-control']) !!}
                     @else
-                        {!! Form::select('etablissement', \App\Etablissement::all()->pluck('full_name', 'id'), null,['class' => 'form-control']) !!}
+                        {!! Form::select('etablissement', $etablissements, null,['class' => 'form-control']) !!}
                     @endif
                     <div class="invalid-feedback">Saisir un établissement</div>
                 </div>
@@ -152,7 +152,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('educateur', 'Educateur', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('educateur', \App\Educateur::all()->pluck('full_name', 'id'), $model->educateur->id,['class' => 'form-control']) !!}
+                    {!! Form::select('educateur', $educateurs, $model->educateur->id,['class' => 'form-control']) !!}
                     <div class="invalid-feedback">Saisir un educateur</div>
                 </div>
             </div>

@@ -14,13 +14,6 @@ class Jour extends Model
         return $this->belongsTo(Planning::class);
     }
 
-    /*
-    public function etablissement(){
-        return $this->planning->bilan->eleve->etablissement->nom;
-    }
-
-    */
-
     public function getEtablissementAttribute(){
         return $this->planning->bilan->eleve->etablissement->nom;
     }

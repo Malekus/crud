@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Affichage élèves exclus</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,9 +12,9 @@
                 @foreach($jours as $key => $jourExlus)
                     <p>Ville: {{ $key }}</p>
                     <table class="table table-bordered table-hover">
-                        <tr>
+                        <tr class="bg-light">
                             <th>Collège</th>
-                            <th>Eleve</th>
+                            <th>Élève</th>
                             <th>Action</th>
                         </tr>
                         @foreach($jourExlus as $jour)

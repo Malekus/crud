@@ -17,30 +17,30 @@ class PlanningController extends Controller
     {
         if ($request->get('search') == null or $request->get('search') > 3000) {
             $carbon = Carbon::now()->format('Y');
-            $period = CarbonPeriod::create($carbon.'-01-01', ($carbon+1).'-01-01');
+            $period = CarbonPeriod::create($carbon . '-01-01', ($carbon + 1) . '-01-01');
             $dates = $this->getOnlyMonth($period->toArray());
-            $jours = $this->daysToArray(Jour::with('planning.bilan.eleve.etablissement')->where("dateExclu", ">=", $carbon.'-01-01')->where("dateExclu", "<=", ($carbon+1).'-01-01')->get());
+            $jours = $this->daysToArray(Jour::with('planning.bilan.eleve.etablissement')->where("dateExclu", ">=", $carbon . '-01-01')->where("dateExclu", "<=", ($carbon + 1) . '-01-01')->get());
             return view('planning.index', compact(['dates', 'jours']));
         }
-        $period = CarbonPeriod::create($request->get('search').'-01-01', ($request->get('search')+1).'-01-01');
+        $period = CarbonPeriod::create($request->get('search') . '-01-01', ($request->get('search') + 1) . '-01-01');
         $dates = $this->getOnlyMonth($period->toArray());
-        dd($dates);
-        return view('planning.index', compact('dates'));
+        $jours = $this->daysToArray(Jour::with('planning.bilan.eleve.etablissement')->where("dateExclu", ">=", $request->get('search') .'-01-01')->where("dateExclu", "<=", ($request->get('search') + 1) . '-01-01')->get());
+        return view('planning.index', compact(['dates', 'jours']));
     }
 
     public function store(PlanningRequest $request)
     {
         $keys = array_keys($request->except(['_token', 'bilan_id', 'dateDebut', 'dateFin']));
         dd($keys);
-        $planning = new Planning(['dateDebut'=>$request->get('dateDebut'), 'dateFin'=>$request->get('dateFin')]);
+        $planning = new Planning(['dateDebut' => $request->get('dateDebut'), 'dateFin' => $request->get('dateFin')]);
         $bilan = Bilan::find($request->get('bilan_id'));
         $planning->bilan()->associate($bilan); // = $bilan->id;
         $planning->save();
 
-        for($i = 0; $i < Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut); $i++ ) {
+        for ($i = 0; $i < Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut); $i++) {
             $r = ['dateExclu' => Carbon::parse($bilan->dateDebut)->addDays($i), 'matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
             foreach ($keys as $key => $value) {
-                if (preg_match("/_".$i."/", $value)) {
+                if (preg_match("/_" . $i . "/", $value)) {
                     $r[explode("_", $value)[0]] = 1;
                 }
             }
@@ -62,7 +62,7 @@ class PlanningController extends Controller
     {
         $planning = Planning::findOrFail($id);
         $keys = array_keys($request->except(['_token', '_method']));
-        foreach ($keys as $key){
+        foreach ($keys as $key) {
             $r = ['matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
             $r[] = $request->get($key);
             $planning->jours[explode('_', $key)[1]]->update([explode('_', $key)[0] => $request->get($key)]);
@@ -73,21 +73,20 @@ class PlanningController extends Controller
     private function getOnlyMonth($data)
     {
         $r = [];
-        foreach ($data as $date){
-            if(array_key_exists($date->format('m'), $r)){
+        foreach ($data as $date) {
+            if (array_key_exists($date->format('m'), $r)) {
                 array_push($r[$date->format('m')], [$date->format('Y-m-d'), $this->daysEnToFr($date->format('l'))]);
-            }
-            else{
+            } else {
                 $r[$date->format('m')] = array();
                 array_push($r[$date->format('m')], [$date->format('Y-m-d'), $this->daysEnToFr($date->format('l'))]);
             }
         }
         array_pop($r['01']);
 
-        foreach ($r as $key => $value){
-            if(sizeof($value) != 31){
+        foreach ($r as $key => $value) {
+            if (sizeof($value) != 31) {
                 $nbX = 31 - sizeof($value);
-                for($i = 0; $i < $nbX; $i++){
+                for ($i = 0; $i < $nbX; $i++) {
                     array_push($r[$key], ['X', 'X']);
                 }
             }
@@ -103,8 +102,9 @@ class PlanningController extends Controller
         return redirect(route('eleve.show', $planning->bilan->eleve->id));
     }
 
-    private function daysEnToFr($days){
-        switch ($days){
+    private function daysEnToFr($days)
+    {
+        switch ($days) {
             case "Monday":
                 return "L";
             case "Tuesday":
@@ -122,28 +122,26 @@ class PlanningController extends Controller
         }
     }
 
-    private function daysToArray($jours) {
+    private function daysToArray($jours)
+    {
         $r = [];
-        foreach ($jours as $jour){
-            if(!array_key_exists($jour->dateExclu, $r)){
+        foreach ($jours as $jour) {
+            if (!array_key_exists($jour->dateExclu, $r)) {
                 $r[$jour->dateExclu] = [$jour->ville];
-            }
-            else{
-                if(!in_array($jour->ville, $r[$jour->dateExclu])) array_push($r[$jour->dateExclu], $jour->ville);
+            } else {
+                if (!in_array($jour->ville, $r[$jour->dateExclu])) array_push($r[$jour->dateExclu], $jour->ville);
             }
         }
 
         $d = [];
-        foreach ($r as $key => $data){
-            if(count($data) == 3){
+        foreach ($r as $key => $data) {
+            if (count($data) == 3) {
                 $d[$key] = "bagnoletEpinayStains";
-            }
-            elseif (count($data) == 1){
+            } elseif (count($data) == 1) {
                 $d[$key] = strtolower($data[0]);
-            }
-            else{
+            } else {
                 asort($data);
-                $d[$key] = strtolower($data[0])."".ucfirst($data[1]);
+                $d[$key] = strtolower($data[0]) . "" . ucfirst($data[1]);
             }
         }
 

@@ -16,7 +16,7 @@
                             <div class="float-left">
                                 {!! Form::open(['method' => 'get','url' => route('planning.index'), 'class' => 'form-inline']) !!}
                                 <div class="form-group mb-2">
-                                    {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => "Année"]) !!}
+                                    {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => "Année", 'maxlength' => 4]) !!}
                                 </div>
                                 <button type="submit" class="btn btn-info mx-sm-3 mb-2">
                                     Rechercher
@@ -27,6 +27,27 @@
                     </div>
 
 
+                    <div class="row">
+                        <div class="col-12 mt-2">
+                            <div class="row">
+                                    <div class="col-4">
+                                        <p style="">Bagnolet
+                                            <button style="background-color: #2980b9; vertical-align: middle; width: 50px; height: 20px;" type="button" class="pr-2 btn" disabled></button>
+                                        </p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p style="">Epinay-sur-Seine
+                                            <button style="background-color: #16a085; vertical-align: middle; width: 50px; height: 20px;" type="button" class="pr-2 btn" disabled></button>
+                                        </p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p style="">Stains
+                                            <button style="background-color: #d35400; vertical-align: middle; width: 50px; height: 20px;" type="button" class="pr-2 btn" disabled></button>
+                                        </p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="row">
@@ -74,22 +95,6 @@
                     </div>
 
 
-                    <div class="row">
-                        <div class="col-12 mt-2">
-                            <div class="row">
-                                <div class="col-4">
-                                    <p style="display: table">Bagnolet <span class="pr-2" style="background-color: #2980b9; display: table-cell; vertical-align: middle; width: 50px; height: 20px;"></span></p>
-                                </div>
-                                <div class="col-4">
-
-                                    <p style="display: table">Epinay <span class="pr-2" style="background-color: #16a085; display: table-cell; vertical-align: middle; width: 50px; height: 20px;"></span></p>
-                                </div>
-                                <div class="col-4">
-                                    <p style="display: table">Stains <span class="pr-2" style="background-color: #d35400; display: table-cell; vertical-align: middle; width: 50px; height: 20px;"></span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -216,11 +221,9 @@
 
             $('.partMonthDays').on('click', '.jour', function () {
                 if($(this).hasClass('nothingToday')) return false;
+                if($(this).hasClass('weekendDay')) return false;
                 var date = $(this).attr('data-id');
                 var url = '{{ url('/ajax/jour')}}';
-                //url = url.replace(':date', date);
-
-                console.log(url)
                 $.ajax({
                     url: url,
                     method: 'POST',
@@ -229,8 +232,6 @@
                     },
                     datatype: 'json',
                     success: function (data) {
-                        console.log(data)
-                        // $('#remplacer').fadeIn(500);
                         $('.no-height').empty();
                         $('.no-height').append(data)
                         $("#remplacer").modal()

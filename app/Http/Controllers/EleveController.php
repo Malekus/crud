@@ -3,27 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Educateur;
+use App\Eleve;
 use App\Etablissement;
 use App\Http\Requests\EleveRequest;
-use App\Eleve;
 use Symfony\Component\HttpFoundation\Request;
 
 class EleveController extends Controller
 {
     public function index(Request $request)
     {
+        $etablissements = Etablissement::all()->pluck('full_name', 'id');
+        $educateurs = Educateur::all()->pluck('full_name', 'id');
+
         if($request->ajax()) {
             $eleves = Eleve::latest()->get();
             return response()->json($eleves);
         }
 
         if ($request->get('search') == null) {
-            $eleves = Eleve::latest()->paginate(10);
-            return view('eleve.index', compact('eleves'));
+            $eleves = Eleve::with('educateur')->with('etablissement')->latest()->paginate(10);
+            return view('eleve.index', compact(['eleves', 'etablissements', 'educateurs']));
         }
 
         $eleves = Eleve::where('nom', 'like', '%' . $request->get('search') . '%')->paginate(10);
-        return view('eleve.index', compact('eleves'));
+        return view('eleve.index', compact(['eleves', 'etablissements', 'educateurs']));
     }
 
     public function store(EleveRequest $request)
@@ -41,8 +44,10 @@ class EleveController extends Controller
 
     public function show($id)
     {
+        $etablissements = Etablissement::all()->pluck('full_name', 'id');
+        $educateurs = Educateur::all()->pluck('full_name', 'id');
         $eleve = Eleve::findOrFail($id);
-        return view('eleve.show', compact(['eleve']));
+        return view('eleve.show', compact(['eleve', 'etablissements', 'educateurs']));
     }
 
     public function update(EleveRequest $request, $id)
