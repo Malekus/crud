@@ -50,7 +50,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('ville', 'Ville', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('ville', ['Stains' => 'Stains', 'Bagnolet' => 'Bagnolet', 'Epinay-sur-seine' => 'Epinay-sur-seine'], 'Stains', ['class' => 'form-control']) !!}
+                    {!! Form::select('ville', ['Stains' => 'Stains', 'Bagnolet' => 'Bagnolet', 'Épinay-sur-Seine' => 'Épinay-sur-Seine'], 'Stains', ['class' => 'form-control']) !!}
                     <div class="invalid-feedback">
                         Saisir un nom
                     </div>
@@ -86,7 +86,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('nom', 'Nom', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::text('nom', $model->nom, ['class' => 'form-control', 'required']) !!}
+                    {!! Form::text('nom', $model->nom, ['class' => 'form-control', 'required', 'id' => 'nom'.$model->id]) !!}
                     <div class="invalid-feedback">
                         Saisir un nom
                     </div>
@@ -95,7 +95,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('prenom', 'Prénom', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::text('prenom', $model->prenom, ['class' => 'form-control', 'required']) !!}
+                    {!! Form::text('prenom', $model->prenom, ['class' => 'form-control', 'required', 'id' => 'prenom'.$model->id]) !!}
                     <div class="invalid-feedback">
                         Saisir un prénom
                     </div>
@@ -104,7 +104,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('sexe', 'Sexe', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('sexe', ['homme' => 'homme', 'femme' => 'femme'], $model->sexe, ['class' => 'form-control']) !!}
+                    {!! Form::select('sexe', ['homme' => 'homme', 'femme' => 'femme'], $model->sexe, ['class' => 'form-control', 'id' => 'sexe'.$model->id]) !!}
                     <div class="invalid-feedback">
                         Saisir un sexe
                     </div>
@@ -113,7 +113,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('dateNaissance', 'Date de naissance', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::date('dateNaissance', $model->dateNaissance, ['class' => 'form-control', 'required']) !!}
+                    {!! Form::date('dateNaissance', $model->dateNaissance, ['class' => 'form-control', 'required', 'id' => 'dateNaissance'.$model->id]) !!}
                     <div class="invalid-feedback">
                         Saisir une date de naissance
                     </div>
@@ -122,7 +122,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('classe', 'Classe', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('classe', ['6ème' => '6ème', '5ème' => '5ème', '4ème' => '4ème', '3ème' => '3ème'], $model->classe, ['class' => 'form-control']) !!}
+                    {!! Form::select('classe', ['6ème' => '6ème', '5ème' => '5ème', '4ème' => '4ème', '3ème' => '3ème'], $model->classe, ['class' => 'form-control', 'id' => 'classe'.$model->id]) !!}
                     <div class="invalid-feedback">
                         Saisir une classe
                     </div>
@@ -131,7 +131,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('ville', 'Ville', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('ville', ['Stains' => 'Stains', 'Bagnolet' => 'Bagnolet', 'Epinay-sur-seine' => 'Epinay-sur-seine'], $model->ville, ['class' => 'form-control']) !!}
+                    {!! Form::select('ville', ['Stains' => 'Stains', 'Bagnolet' => 'Bagnolet', 'Épinay-sur-Seine' => 'Épinay-sur-Seine'], $model->ville, ['class' => 'form-control', 'id' => 'ville'.$model->id]) !!}
                     <div class="invalid-feedback">
                         Saisir une ville
                     </div>
@@ -141,9 +141,9 @@
                 {!! Form::label('etablissement', 'Etablissement', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
                     @if($model->etablissement)
-                        {!! Form::select('etablissement', $etablissements, $model->etablissement->id,['class' => 'form-control']) !!}
+                        {!! Form::select('etablissement', $etablissements, $model->etablissement->id,['class' => 'form-control', 'id' => 'etablissement'.$model->id]) !!}
                     @else
-                        {!! Form::select('etablissement', $etablissements, null,['class' => 'form-control']) !!}
+                        {!! Form::select('etablissement', $etablissements, null,['class' => 'form-control', 'id' => 'etablissement'.$model->id]) !!}
                     @endif
                     <div class="invalid-feedback">Saisir un établissement</div>
                 </div>
@@ -152,7 +152,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('educateur', 'Educateur', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::select('educateur', $educateurs, $model->educateur->id,['class' => 'form-control']) !!}
+                    {!! Form::select('educateur', $educateurs, $model->educateur->id,['class' => 'form-control', 'id' => 'educateur'.$model->id]) !!}
                     <div class="invalid-feedback">Saisir un educateur</div>
                 </div>
             </div>

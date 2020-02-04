@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EleveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EleveController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jour.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jour.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/passwords.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/passwords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/ajax/jours.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ajax/jours.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/EleveFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EleveFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/educateur/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/educateur/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/eleve/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/planning/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/planning/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -239,7 +233,7 @@
       <workItem from="1580752819947" duration="5765000" />
       <workItem from="1580791384113" duration="6008000" />
       <workItem from="1580829277626" duration="831000" />
-      <workItem from="1580834588405" duration="9258000" />
+      <workItem from="1580834588405" duration="12245000" />
     </task>
     <servers />
   </component>

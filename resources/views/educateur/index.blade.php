@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 pb-2">
-                            <h1><i class="fas fa-users mr-2"></i>Educateur</h1>
+                            <h1><i class="fas fa-users mr-2"></i>Éducateur</h1>
                         </div>
                     </div>
                     <div class="row">
@@ -62,7 +62,7 @@
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5><i class="fas fa-users mr-3"></i>Modifier un educateur</h5>
+                                                                <h5><i class="fas fa-users mr-3"></i>Modifier un éducateur</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
@@ -72,7 +72,7 @@
                                                                 <div class="form-group row justify-content-center">
                                                                     {!! Form::label('nom', 'Nom', ['class' => 'col-lg-2 col-form-label']) !!}
                                                                     <div class="col-lg-6">
-                                                                        {!! Form::text('nom', null, ['class' => 'form-control', 'required']) !!}
+                                                                        {!! Form::text('nom', null, ['class' => 'form-control', 'required', 'id' => 'nom'.$educateur->id]) !!}
                                                                         <div class="invalid-feedback">
                                                                             Saisir un nom
                                                                         </div>
@@ -81,7 +81,7 @@
                                                                 <div class="form-group row justify-content-center">
                                                                     {!! Form::label('prenom', 'Prénom', ['class' => 'col-lg-2 col-form-label']) !!}
                                                                     <div class="col-lg-6">
-                                                                        {!! Form::text('prenom', null, ['class' => 'form-control', 'required']) !!}
+                                                                        {!! Form::text('prenom', null, ['class' => 'form-control', 'required', 'id' => 'prenom'.$educateur->id]) !!}
                                                                         <div class="invalid-feedback">
                                                                             Saisir un nom
                                                                         </div>
@@ -136,7 +136,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5><i class="fas fa-users mr-3"></i>Ajouter un educateur</h5>
+                        <h5><i class="fas fa-users mr-3"></i>Ajouter un éducateur</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -157,7 +157,7 @@
                                 <div class="col-lg-6">
                                     {!! Form::text('prenom', null, ['class' => 'form-control', 'required']) !!}
                                     <div class="invalid-feedback">
-                                        Saisir un nom
+                                        Saisir un prénom
                                     </div>
                                 </div>
                             </div>
