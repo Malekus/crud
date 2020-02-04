@@ -12,8 +12,20 @@ class Bilan extends Model
     protected static function boot()
     {
         parent::boot();
-
         self::updating(function ($model) {
+            /*
+
+            Planning::destroy($model->planning);
+            $planning = new Planning(['dateDebut'=>$model->dateDebut, 'dateFin'=>$model->dateFin]);
+            $planning->bilan()->associate($model);
+            $planning->save();
+            for($i = 0; $i < $model->getNbJour(); $i++ ) {
+                $r = ['dateExclu' => Carbon::parse($model->dateDebut)->addDays($i), 'matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
+                $jour = new Jour($r);
+                $jour->planning()->associate($planning);
+                $jour->save();
+            }
+
             if (Carbon::parse($model->dateFin)->diffInDays($model->dateDebut) < count($model->planning->jours)) {
                 $model->planning()->delete();
                 $planning = new Planning(['dateDebut' => $model->dateDebut, 'dateFin' => $model->dateFin]);
@@ -37,16 +49,26 @@ class Bilan extends Model
                     }
                 }
             }
+            */
         });
-
         self::created(function ($model) {
             $model->eleve->updated_at = Carbon::now();
             $model->eleve->save();
+            $planning = new Planning(['dateDebut'=>$model->dateDebut, 'dateFin'=>$model->dateFin]);
+            $planning->bilan()->associate($model);
+            $planning->save();
+            for($i = 0; $i < $model->getNbJour(); $i++ ) {
+                $r = ['dateExclu' => Carbon::parse($model->dateDebut)->addDays($i), 'matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
+                $jour = new Jour($r);
+                $jour->planning()->associate($planning);
+                $jour->save();
+            }
         });
 
         self::updated(function ($model) {
             $model->eleve->updated_at = Carbon::now();
             $model->eleve->save();
+
         });
 
         self::deleted(function ($model) {
@@ -64,5 +86,14 @@ class Bilan extends Model
     public function planning()
     {
         return $this->hasOne(Planning::class);
+    }
+
+    private function getNbJour(){
+        return Carbon::parse($this->dateFin)->diffInDays($this->dateDebut);
+    }
+
+    public function setRapportAttribute($value)
+    {
+        $this->attributes['rapport'] = trim($value);
     }
 }

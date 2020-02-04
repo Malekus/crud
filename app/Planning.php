@@ -27,6 +27,7 @@ class Planning extends Model
         self::deleted(function ($model) {
             $model->bilan->updated_at = Carbon::now();
             $model->bilan->save();
+            $model->jours()->delete();
         });
 
     }

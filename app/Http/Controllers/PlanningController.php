@@ -31,7 +31,7 @@ class PlanningController extends Controller
     public function store(PlanningRequest $request)
     {
         $keys = array_keys($request->except(['_token', 'bilan_id', 'dateDebut', 'dateFin']));
-
+        dd($keys);
         $planning = new Planning(['dateDebut'=>$request->get('dateDebut'), 'dateFin'=>$request->get('dateFin')]);
         $bilan = Bilan::find($request->get('bilan_id'));
         $planning->bilan()->associate($bilan); // = $bilan->id;

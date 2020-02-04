@@ -4,13 +4,13 @@
             <li>
                 <a href="{{ route('eleve.index') }}">
                     <span><i class="fa fa-user"></i></span>
-                    <span>Eleve</span>
+                    <span>Élève</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('educateur.index') }}">
                     <span><i class="fa fa-users"></i></span>
-                    <span>Educateur</span>
+                    <span>Éducateur</span>
                 </a>
             </li>
             <li>

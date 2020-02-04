@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Eleve;
-use App\Http\Requests\BilanRequest;
 use App\Bilan;
+use App\Eleve;
+use App\Planning;
+use App\Http\Requests\BilanRequest;
+use App\Jour;
+use Carbon\Carbon;
 
 class BilanController extends Controller
 {
@@ -30,7 +33,6 @@ class BilanController extends Controller
     public function show($id)
     {
         $bilan = Bilan::findOrFail($id);
-
         return response()->json($bilan);
     }
 
@@ -43,6 +45,17 @@ class BilanController extends Controller
         }
         $bilan = Bilan::findOrFail($id);
         $bilan->update($request->except('eleve_id'));
+        $bilan->planning()->delete();
+        $planning = new Planning(['dateDebut'=>$bilan->dateDebut, 'dateFin'=>$bilan->dateFin]);
+        $planning->bilan()->associate($bilan); // = $bilan->id;
+        $planning->save();
+
+        for($i = 0; $i < Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut); $i++ ) {
+            $r = ['dateExclu' => Carbon::parse($bilan->dateDebut)->addDays($i), 'matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
+            $jour = new Jour($r);
+            $jour->planning()->associate($planning);
+            $jour->save();
+        }
         return redirect(route('eleve.show', $request->get('eleve_id')));
     }
 

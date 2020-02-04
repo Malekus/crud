@@ -29,4 +29,14 @@ class Eleve extends Model
         return $this->hasManyThrough(Planning::class, Bilan::class);
     }
 
+    public function setNomAttribute($value)
+    {
+        $this->attributes['nom'] = strtoupper($value);
+    }
+
+    public function setPrenomAttribute($value)
+    {
+        $this->attributes['prenom'] = ucfirst($value);
+    }
+
 }

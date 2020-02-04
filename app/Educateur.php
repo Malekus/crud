@@ -17,4 +17,14 @@ class Educateur extends Model
     {
         return $this->hasMany(Eleve::class);
     }
+
+    public function setNomAttribute($value)
+    {
+        $this->attributes['nom'] = strtoupper($value);
+    }
+
+    public function setPrenomAttribute($value)
+    {
+        $this->attributes['prenom'] = ucfirst($value);
+    }
 }
