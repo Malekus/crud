@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="" />
+    <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/BatimentRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CarRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +233,12 @@
       <workItem from="1580752819947" duration="5765000" />
       <workItem from="1580791384113" duration="6008000" />
       <workItem from="1580829277626" duration="831000" />
-      <workItem from="1580834588405" duration="12537000" />
+      <workItem from="1580834588405" duration="13459000" />
+      <workItem from="1580886734194" duration="2364000" />
+      <workItem from="1580921393050" duration="6736000" />
+      <workItem from="1580969068037" duration="2791000" />
+      <workItem from="1581013014056" duration="632000" />
+      <workItem from="1581058513082" duration="2442000" />
     </task>
     <servers />
   </component>
@@ -243,6 +253,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
