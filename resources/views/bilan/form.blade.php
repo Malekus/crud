@@ -30,6 +30,15 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group row justify-content-center">
+                {!! Form::label('evaluation', 'Évaluation de l\'élève', ['class' => 'col-lg-2 col-form-label']) !!}
+                <div class="col-lg-6">
+                    <textarea class="form-control" minlength="10" name="evaluation" id="evaluation" rows="10" cols="50" style="resize: none;"></textarea>
+                    <div class="invalid-feedback">
+                        Saisir un évaluation
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -45,7 +54,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('dateDebut', 'Date de début', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::date('dateDebut', $model->dateDebut, ['class' => 'form-control', 'required']) !!}
+                    {!! Form::date('dateDebut', $model->dateDebut, ['class' => 'form-control', 'required', 'id' => 'dateDebut'.$model->id]) !!}
                     <div class="invalid-feedback">
                         Saisir une date de debut
                     </div>
@@ -54,7 +63,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('dateFin', 'Date de fin', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    {!! Form::date('dateFin', $model->dateFin, ['class' => 'form-control', 'required']) !!}
+                    {!! Form::date('dateFin', $model->dateFin, ['class' => 'form-control', 'required', 'id' => 'dateFin'.$model->id]) !!}
                     <div class="invalid-feedback">
                         Saisir une date de fin
                     </div>
@@ -63,9 +72,20 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('rapport', 'Rapport', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    <textarea class="form-control" minlength="10" required name="rapport" id="rapport" rows="10" cols="50" style="resize: none;">{{ $model->rapport  }}</textarea>
+                    <textarea class="form-control" minlength="10" required name="rapport" id="{{ 'rapport_'.$model->id }}" rows="10" cols="50" style="resize: none;">{{ $model->rapport }}</textarea>
                     <div class="invalid-feedback">
                         Saisir un rapport
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                {!! Form::label('evaluation', 'Évaluation de l\'élève', ['class' => 'col-lg-2 col-form-label']) !!}
+                <div class="col-lg-6">
+                    <textarea class="form-control" minlength="10" name="evaluation" id="{{ 'evaluation_'.$model->id }}" rows="10" cols="50" style="resize: none;">
+                        {{ $model->evaluation }}
+                    </textarea>
+                    <div class="invalid-feedback">
+                        Saisir un évaluation
                     </div>
                 </div>
             </div>
@@ -96,6 +116,9 @@
             </p>
             <p>
                 {{ $bilan->rapport }}
+            </p>
+            <p>
+                {{ $bilan->evaluation }}
             </p>
         </div>
         <div class="modal-footer">

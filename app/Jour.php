@@ -7,23 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 class Jour extends Model
 {
 
-    protected $fillable = ['dateExclu', 'matinAbsent', 'apremAbsent', 'matinRetard', 'apremRetard'];
+    protected $fillable = ['dateExclu', 'matinAbsent', 'apremAbsent', 'matinRetard', 'apremRetard', 'travail'];
 
     public function planning()
     {
         return $this->belongsTo(Planning::class);
     }
 
-    public function getEtablissementAttribute(){
+    public function getEtablissementAttribute()
+    {
         return $this->planning->bilan->eleve->etablissement->nom;
     }
 
-    public function getVilleAttribute(){
+    public function getVilleAttribute()
+    {
         return empty($this->planning->bilan->eleve->etablissement->ville) ? "N/A" : $this->planning->bilan->eleve->etablissement->ville;
     }
 
-    public function getNomPrenomAttribute(){
+    public function getNomPrenomAttribute()
+    {
         return $this->planning->bilan->eleve->nom . " " . $this->planning->bilan->eleve->prenom;
     }
 
+    public function setTravailAttribute($value)
+    {
+        $this->attributes['travail'] = trim($value);
+    }
 }

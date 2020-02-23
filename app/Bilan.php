@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bilan extends Model
 {
-    protected $fillable = ['dateDebut', 'dateFin', 'rapport', 'eleve_id'];
+    protected $fillable = ['dateDebut', 'dateFin', 'rapport', 'evaluation', 'eleve_id'];
 
     protected static function boot()
     {
@@ -54,10 +54,10 @@ class Bilan extends Model
         self::created(function ($model) {
             $model->eleve->updated_at = Carbon::now();
             $model->eleve->save();
-            $planning = new Planning(['dateDebut'=>$model->dateDebut, 'dateFin'=>$model->dateFin]);
+            $planning = new Planning(['dateDebut' => $model->dateDebut, 'dateFin' => $model->dateFin]);
             $planning->bilan()->associate($model);
             $planning->save();
-            for($i = 0; $i < $model->getNbJour(); $i++ ) {
+            for ($i = 0; $i < $model->getNbJour(); $i++) {
                 $r = ['dateExclu' => Carbon::parse($model->dateDebut)->addDays($i), 'matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
                 $jour = new Jour($r);
                 $jour->planning()->associate($planning);
@@ -88,12 +88,18 @@ class Bilan extends Model
         return $this->hasOne(Planning::class);
     }
 
-    private function getNbJour(){
+    private function getNbJour()
+    {
         return Carbon::parse($this->dateFin)->diffInDays($this->dateDebut);
     }
 
     public function setRapportAttribute($value)
     {
         $this->attributes['rapport'] = trim($value);
+    }
+
+    public function setEvaluationAttribute($value)
+    {
+        $this->attributes['evaluation'] = trim($value);
     }
 }

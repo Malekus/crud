@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,12 +14,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             EtablissementTableSeeder::class,
-            /*
             EducateurTableSeeder::class,
             EleveTableSeeder::class,
             BilanTableSeeder::class,
             PlanningTableSeeder::class,
-            JourTableSeeder::class
+            JourTableSeeder::class,
+            //User::create(['name'=> 'Kader', 'email' => "abdelkader.moussa@outlook.fr", 'password' => Hash::make("popojetaime92")])
+            /*
             */
         ]);
     }

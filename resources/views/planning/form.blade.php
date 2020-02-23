@@ -138,9 +138,16 @@
                             <input class="form-check-input" type="checkbox" name="{{'apremAbsent_'.$key}}" value="1" @if($jour->apremAbsent == 1) checked @endif>
                             <label class="form-check-label" for="{{'apremAbsent_'.$key}}">après-midi</label>
                         </div>
-
                     </div>
                 </div>
+
+                <div class="form-group row justify-content-center">
+                    {!! Form::label('travail_'.$model->id.'_'.$key, 'Travail', ['class' => 'col-lg-2 col-form-label']) !!}
+                    <div class="col-lg-6">
+                        {!! Form::text('travail_'.$model->id.'_'.$key, $model->travail ? $model->travail : null, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+
             @endforeach
         </div>
         <div class="modal-footer">
@@ -163,11 +170,17 @@
     @endif
 @endisset
 
-{{--
+{{--                        <div class="form-check form-check-inline" style="height: 100%">
+                            <input type="hidden" value="0" name="{{'matinAbsent_'.$key}}">
+                            <input class="form-check-input" type="checkbox" name="{{'matinAbsent_'.$key}}" value="1" @if($jour->matinAbsent == 1) checked @endif>
+                            <label class="form-check-label" for="{{'matinAbsent_'.$key}}">matin</label>
+                        </div>
 
+                <div class="form-group row justify-content-center">
+                    {!! Form::label('travail_'.$key, 'Travail', ['class' => 'col-lg-2 col-form-label']) !!}
+                    <div class="col-lg-6">
+                        {!! Form::text('travail_'.$key, $model->travail ? $model->travail : null, ['class' => 'form-control', 'required', 'nom' => 'travail_'.$key]) !!}
+                    </div>
+                </div>
 
-
-
---}}
-
-
+                        --}}

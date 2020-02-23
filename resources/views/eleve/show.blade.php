@@ -87,6 +87,7 @@
                                         <th>Date de fin</th>
                                         <th>Nombre de jour exclus</th>
                                         <th>Rapport</th>
+                                        <th>Évaluation de l'élève</th>
                                         <th>Dernière modification</th>
                                         <th>Action</th>
                                     </tr>
@@ -105,7 +106,8 @@
                                             <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }}
                                                 jours
                                             </td>
-                                            <td>{{ \Illuminate\Support\Str::limit($bilan->rapport, $limit = 50, $end = ' [...]') }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($bilan->rapport, $limit = 30, $end = ' [...]') }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($bilan->evaluation, $limit = 30, $end = ' [...]') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($bilan->updated_at)->format('d/m/Y')  }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-success" data-toggle="modal"

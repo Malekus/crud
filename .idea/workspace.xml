@@ -3,9 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/BatimentRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CarRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Bilan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Bilan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JourController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JourController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlanningController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jour.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jour.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_09_094452_create_bilans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_09_094452_create_bilans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_11_141128_create_jours_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_11_141128_create_jours_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/pagination.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/pagination.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/bilan/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/bilan/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/eleve/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/eleve/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eleve/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/planning/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/planning/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -238,7 +250,15 @@
       <workItem from="1580921393050" duration="6736000" />
       <workItem from="1580969068037" duration="2791000" />
       <workItem from="1581013014056" duration="632000" />
-      <workItem from="1581058513082" duration="2442000" />
+      <workItem from="1581058513082" duration="2722000" />
+      <workItem from="1581086972891" duration="598000" />
+      <workItem from="1581182199619" duration="598000" />
+      <workItem from="1581274162445" duration="2666000" />
+      <workItem from="1581312745837" duration="1076000" />
+      <workItem from="1581397727646" duration="1207000" />
+      <workItem from="1581771635123" duration="1165000" />
+      <workItem from="1581853523859" duration="9000" />
+      <workItem from="1582459244575" duration="7525000" />
     </task>
     <servers />
   </component>
@@ -294,12 +314,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>409</line>
+          <line>411</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/eleve/show.blade.php</url>
-          <line>391</line>
+          <line>393</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

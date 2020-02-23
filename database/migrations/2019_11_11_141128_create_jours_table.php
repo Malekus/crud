@@ -16,6 +16,7 @@ class CreateJoursTable extends Migration
             $table->boolean('matinRetard')->default(0);
             $table->boolean('apremAbsent')->default(0);
             $table->boolean('apremRetard')->default(0);
+            $table->text('travail')->nullable();
             $table->integer('planning_id')->unsigned()->index();
             $table->foreign('planning_id')->references('id')->on('plannings')->onDelete('cascade');
             $table->timestamps();
