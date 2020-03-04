@@ -25,6 +25,12 @@
                     <span>Statistique</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('rapport.index') }}">
+                    <span><i class="fa fa-file"></i></span>
+                    <span>Rapport</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>

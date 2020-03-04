@@ -81,12 +81,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('evaluation', 'Évaluation de l\'élève', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    <textarea class="form-control" minlength="10" name="evaluation" id="{{ 'evaluation_'.$model->id }}" rows="10" cols="50" style="resize: none;">
-                        {{ $model->evaluation }}
-                    </textarea>
-                    <div class="invalid-feedback">
-                        Saisir un évaluation
-                    </div>
+                    <textarea class="form-control" minlength="10" name="evaluation" id="{{ 'evaluation_'.$model->id }}" rows="10" cols="50" style="resize: none;">{{ $model->evaluation }}</textarea>
                 </div>
             </div>
         </div>
@@ -114,9 +109,11 @@
             <p>
                 Période du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}
             </p>
+            <p class="font-weight-bold">Bilan de l'éducateur</p>
             <p>
                 {{ $bilan->rapport }}
             </p>
+            <p class="font-weight-bold">Évaluation de l'élève</p>
             <p>
                 {{ $bilan->evaluation }}
             </p>
@@ -126,3 +123,10 @@
         </div>
     @endif
 @endisset
+
+<style>
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+
+        padding: 5px !important; // currently 8px
+    }
+</style>

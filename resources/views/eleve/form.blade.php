@@ -176,19 +176,3 @@
         {!! Form::close() !!}
     @endif
 @endisset
-
-{{--
-            <div class="form-group row justify-content-center">
-                {!! Form::label('travail', 'Travail de l\'élève', ['class' => 'col-lg-2 col-form-label']) !!}
-                <div class="col-lg-6">
-                    <textarea class="form-control" minlength="10" required name="travail" id="travail" rows="10" cols="50" style="resize: none;">
-                        {{ $model->travail }}
-                    </textarea>
-                    <div class="invalid-feedback">
-                        Saisir un travail
-                    </div>
-                </div>
-            </div>
-            --}}
-
-

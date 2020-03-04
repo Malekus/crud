@@ -222,8 +222,7 @@
                                     @foreach($eleve->plannings as $key => $planning)
                                         <tr id="{{ $planning->id  }}">
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }}
-                                                jours
+                                            <td>{{ \Carbon\Carbon::parse($bilan->dateFin)->diffInDays($bilan->dateDebut) }} jours
                                             </td>
                                             @php
                                                 $nbJourRetard = 0
@@ -266,7 +265,7 @@
                                                         <div class="modal-header">
                                                             <h5><i class="fa fa-file-alt mr-3"></i>Planning de {{ $eleve->nom }} {{ $eleve->prenom }}
                                                             </h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
+                                                            <button id="btnShowPlanning" type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -379,73 +378,23 @@
 @endsection
 
 @section('javascript')
-    <script>
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 @endsection
-
-
-{{--
-    $(document).ready(function(){
-        $('.toast').toast({"delay": 2000});
-        $('.toast').toast("show");
-    })
---}}
-
-
-{{--
-    <div style="display: flex; justify-content: flex-end; flex-direction: column; position: absolute; top: 60px; right: 15px;">
-        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
-            <div class="toast-header">
-                <strong class="mr-auto">Bootstrap</strong>
-                <small class="text-muted">11 mins ago</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
-            <div class="toast-header">
-                <strong class="mr-auto">Bootstrap</strong>
-                <small class="text-muted">11 mins ago</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-        <div class="toast" id="notification" role="alert" aria-live="assertive" aria-atomic="true" style="width: 350px;">
-            <div class="toast-header">
-                <strong class="mr-auto">Bootstrap</strong>
-                <small class="text-muted">11 mins ago</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
-            </div>
-        </div>
-    </div>
---}}

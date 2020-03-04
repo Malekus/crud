@@ -61,12 +61,20 @@ class PlanningController extends Controller
     {
         $planning = Planning::findOrFail($id);
         $keys = array_keys($request->except(['_token', '_method']));
+        //dd($keys);
         foreach ($keys as $key) {
-            $r = ['matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0];
+            $r = ['matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0, 'travail' => null];
             $r[] = $request->get($key);
             $planning->jours[explode('_', $key)[1]]->update([explode('_', $key)[0] => $request->get($key)]);
         }
         return redirect(route('eleve.show', $planning->bilan->eleve->id));
+    }
+
+
+    public static function showTable($id)
+    {
+        $planning = Planning::findOrFail($id);
+        return view('planning.table', compact('planning'));
     }
 
     private function getOnlyMonth($data)

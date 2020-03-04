@@ -95,10 +95,18 @@
                 @if($jour->matinRetard == 1 and $jour->apremRetard == 1)
                     a été en retard le matin et l'après-midi.
                 @endif
+                {{ $jour->travail ? $jour->travail : 'Aucun travail assigné.'  }}
                 </p>
             @endforeach
+
+            {{--
+            {{ \App\Http\Controllers\PlanningController::showTable($model->id) }}
+            --}}
+
+
         </div>
         <div class="modal-footer">
+
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         </div>
     @endif
@@ -142,9 +150,9 @@
                 </div>
 
                 <div class="form-group row justify-content-center">
-                    {!! Form::label('travail_'.$model->id.'_'.$key, 'Travail', ['class' => 'col-lg-2 col-form-label']) !!}
+                    {!! Form::label('travail_'.$key.'_'.$model->id, 'Travail', ['class' => 'col-lg-2 col-form-label']) !!}
                     <div class="col-lg-6">
-                        {!! Form::text('travail_'.$model->id.'_'.$key, $model->travail ? $model->travail : null, ['class' => 'form-control']) !!}
+                        {!! Form::text('travail_'.$key.'_'.$model->id, $jour->travail ? $jour->travail : null, ['class' => 'form-control']) !!}
                     </div>
                 </div>
 
@@ -169,18 +177,3 @@
         {!! Form::close() !!}
     @endif
 @endisset
-
-{{--                        <div class="form-check form-check-inline" style="height: 100%">
-                            <input type="hidden" value="0" name="{{'matinAbsent_'.$key}}">
-                            <input class="form-check-input" type="checkbox" name="{{'matinAbsent_'.$key}}" value="1" @if($jour->matinAbsent == 1) checked @endif>
-                            <label class="form-check-label" for="{{'matinAbsent_'.$key}}">matin</label>
-                        </div>
-
-                <div class="form-group row justify-content-center">
-                    {!! Form::label('travail_'.$key, 'Travail', ['class' => 'col-lg-2 col-form-label']) !!}
-                    <div class="col-lg-6">
-                        {!! Form::text('travail_'.$key, $model->travail ? $model->travail : null, ['class' => 'form-control', 'required', 'nom' => 'travail_'.$key]) !!}
-                    </div>
-                </div>
-
-                        --}}

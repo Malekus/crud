@@ -30,6 +30,12 @@ Route::get('/ajax/test', 'AjaxController@test')
 Route::get('/statistique', 'StatistiqueController@index')
     ->name('statistique.index');
 
+Route::get('/rapport', 'RapportController@index')
+    ->name('rapport.index');
+
+Route::get('/rapport/exportPDF', 'RapportController@exportPDF')
+    ->name('rapport.exportPDF');
+
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
