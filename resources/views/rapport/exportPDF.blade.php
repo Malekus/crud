@@ -14,18 +14,34 @@
     }
 
     .h-85 {
-        height: 85%!important;
+        height: 85% !important;
+    }
+
+    .spaceFlex {
+        /*style="display: flex; justify-content: space-between;"*/
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .widthImage {
+        width: calc(100% / 3) !important;
     }
 </style>
 <div class="container-fluid">
     <div class="row">
-        <table>
+        <table class="w-100">
             <tbody>
+
             <tr>
-                <td><img src="https://fakeimg.pl/250x100"></td>
-                <td><img src="https://fakeimg.pl/250x100"></td>
-                <td><img src="https://fakeimg.pl/250x100"></td>
+                <td class="text-left"><img style="width: 100px;"
+                                           src="https://acte.apcis-association.fr/assets/images/apcis.jpg"></td>
+                <td class="w-100 text-center"><img style="width: 100px;"
+                                                   src="https://acte.apcis-association.fr/assets/images/academie_creteil.png">
+                </td>
+                <td class="text-right"><img style="width: 150px;"
+                                            src="https://acte.apcis-association.fr/assets/images/logo_ue.png"></td>
             </tr>
+
             </tbody>
         </table>
     </div>
@@ -167,16 +183,23 @@
 
 <div class="container-fluid">
     <div class="row">
-        <table>
+        <table class="w-100">
             <tbody>
+
             <tr>
-                <td><img src="https://fakeimg.pl/250x100"></td>
-                <td><img src="https://fakeimg.pl/250x100"></td>
-                <td><img src="https://fakeimg.pl/250x100"></td>
+                <td class="text-left"><img style="width: 100px;"
+                                           src="https://acte.apcis-association.fr/assets/images/apcis.jpg"></td>
+                <td class="w-100 text-center"><img style="width: 100px;"
+                                                   src="https://acte.apcis-association.fr/assets/images/academie_creteil.png">
+                </td>
+                <td class="text-right"><img style="width: 150px;"
+                                            src="https://acte.apcis-association.fr/assets/images/logo_ue.png"></td>
             </tr>
+
             </tbody>
         </table>
     </div>
+
     <div class="row">
         <div class="col-12">
             <p class="text-uppercase text-center font-weight-bold">bilan global (éducateur)</p>
@@ -199,14 +222,30 @@
             <p class="font-italic px-2 pt-2">Connaissances/compétences/comportement/adaptation/mode de
                 vie/projets/propositions...</p>
             <p class="p-2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
+                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
+                sequi ut voluptatum?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
+                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
+                voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
+                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
+                sequi ut voluptatum?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
+                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
+                voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
+                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
+                sequi ut voluptatum?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
+                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
+                voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
+                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
+                sequi ut voluptatum?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
+                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
+                voluptates!
             </p>
         </div>
     </div>
@@ -218,16 +257,19 @@
 
 <div class="container-fluid">
     <div class="row">
-        <table>
+        <table class="w-100">
             <tbody>
+
             <tr>
-                <td><img style="width: 200px;" src="{{ asset('assets/images/apcis.jpg') }}"></td>
-                <td><img style="width: 200px;" src="{{ asset('assets/images/academie_creteil.png') }}"></td>
-                <td><img style="width: 200px;" src="{{ asset('assets/images/logo_ue.png') }}"></td>
+                <td class="text-left"><img style="width: 100px;" src="https://acte.apcis-association.fr/assets/images/apcis.jpg"></td>
+                <td class="w-100 text-center"><img style="width: 100px;" src="https://acte.apcis-association.fr/assets/images/academie_creteil.png"></td>
+                <td class="text-right"><img style="width: 150px;" src="https://acte.apcis-association.fr/assets/images/logo_ue.png"></td>
             </tr>
+
             </tbody>
         </table>
     </div>
+
     <div class="row">
         <div class="col-12">
             <p class="text-uppercase text-center font-weight-bold">auto-evaluation(élève)</p>
@@ -249,19 +291,37 @@
     <div class="row">
         <div class="border h-85" style="border-color: black;">
             <p class="font-italic px-2 pt-2">
-                Pourquoi es-tu venu(e) à l'APCIS ? Comment cela s'est-il passé ? Quel travail as-tu effectué ? As-tu bien compris ce qu'on demandait ? Cela t'a intéréssé ? T'es-tu bien senti(e) dans l'équipe ? et avec les autres élèves ? qu'as-tu retenu de ces journées passées à l'APCIS ?
+                Pourquoi es-tu venu(e) à l'APCIS ? Comment cela s'est-il passé ? Quel travail as-tu effectué ? As-tu
+                bien compris ce qu'on demandait ? Cela t'a intéréssé ? T'es-tu bien senti(e) dans l'équipe ? et avec les
+                autres élèves ? qu'as-tu retenu de ces journées passées à l'APCIS ?
             </p>
             <p class="p-2">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse et excepturi ipsa laborum nostrum optio
                 ullam ut. Accusamus, ad aspernatur atque doloribus eum facere officia, quae quasi saepe, sed ut.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
+                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
+                sequi ut voluptatum?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
+                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
+                voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
+                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
+                sequi ut voluptatum?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
+                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
+                voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
+                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
+                sequi ut voluptatum?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
+                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
+                voluptates!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
+                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
+                sequi ut voluptatum?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
+                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
+                voluptates!
             </p>
         </div>
     </div>

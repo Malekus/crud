@@ -20,8 +20,9 @@ class RapportController extends Controller
     public function exportPDF()
     {
         $eleve = Eleve::find(1);
+        
         return view('rapport.exportPDF', compact(['eleve']));
         $pdf = PDF::loadView('rapport.exportPDF', compact(['eleve']));
-        return $pdf->download();
+        return $pdf->stream();
     }
 }

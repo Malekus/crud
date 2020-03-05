@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41c48ca9-ab80-4231-a109-26972b20360d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crud.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RapportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RapportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/rapport/exportPDF.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rapport/exportPDF.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -268,7 +263,7 @@
       <workItem from="1583000329658" duration="2561000" />
       <workItem from="1583214048954" duration="17180000" />
       <workItem from="1583299221837" duration="13825000" />
-      <workItem from="1583388746342" duration="2931000" />
+      <workItem from="1583388746342" duration="9472000" />
     </task>
     <servers />
   </component>
