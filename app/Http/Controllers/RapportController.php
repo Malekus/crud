@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Educateur;
 use App\Eleve;
 use App\Etablissement;
+use App\Bilan;
+use App\Jour;
+use App\Planning;
 use PDF;
 
 class RapportController extends Controller
@@ -13,17 +16,28 @@ class RapportController extends Controller
     {
         $etablissements = Etablissement::all()->pluck('full_name', 'id');
         $educateurs = Educateur::all()->pluck('full_name', 'id');
-        $eleves = Eleve::all()->take(15);
+        $eleves = Eleve::all();
         return view('rapport.index', compact('eleves'));
         //return view('rapport.index', compact(['eleves', 'etablissements', 'educateurs']));
     }
 
-    public function exportPDF()
+    public function exportPDF($id)
     {
-        $eleve = Eleve::find(1);
+        /*
+        if ($id == null){
+            $eleve = Eleve::find(1);
+            return view('rapport.exportPDF', compact(['eleve']));
+            $pdf = PDF::loadView('rapport.exportPDF', compact(['eleve']));
+            return $pdf->stream();
+        }
+        */
 
-        return view('rapport.exportPDF', compact(['eleve']));
-        $pdf = PDF::loadView('rapport.exportPDF', compact(['eleve']));
+        $bilan = Bilan::find($id);
+        $planning = Planning::where('bilan_id', '=', $id)->first();
+        $jours = Jour::where('planning_id',$planning->id)->get();
+        return view('rapport.exportPDF', ['eleve' => $bilan->eleve, 'bilan' => $bilan, 'jours' => $jours]);
+        $pdf = PDF::loadView('rapport.exportPDF', ['eleve' => $bilan->eleve, 'bilan' => $bilan, 'jours' => $jours]);
         return $pdf->stream();
     }
+
 }

@@ -33,7 +33,7 @@ Route::get('/statistique', 'StatistiqueController@index')
 Route::get('/rapport', 'RapportController@index')
     ->name('rapport.index');
 
-Route::get('/rapport/exportPDF', 'RapportController@exportPDF')
+Route::get('/rapport/exportPDF/{id}', 'RapportController@exportPDF')
     ->name('rapport.exportPDF');
 
 Auth::routes(['register' => false]);

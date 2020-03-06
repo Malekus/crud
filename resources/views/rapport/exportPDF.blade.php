@@ -27,6 +27,9 @@
         width: calc(100% / 3) !important;
     }
 </style>
+
+{{ \Carbon\Carbon::parse($jours[0]->dateExclu)->format('l d m yy')}}
+
 <div class="container-fluid">
     <div class="row">
         <table class="w-100">
@@ -63,7 +66,7 @@
                 <td><span class="font-weight-bold">Etablissement</span> : {{ $eleve->etablissement->full_name }}</td>
             </tr>
             <tr>
-                <td><span class="font-weight-bold">Période d'accueil</span> :</td>
+                <td><span class="font-weight-bold">Période d'accueil</span> : du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
             </tr>
         </table>
     </div>
@@ -212,7 +215,7 @@
                 <td class="w-50"><span class="font-weight-bold">Nom et prénom de l'élève :</span> {{ $eleve->nom }}</td>
             </tr>
             <tr>
-                <td class="w-50"><span class="font-weight-bold">Période d'accueil :</span> {{ $eleve->nom }}</td>
+                <td class="w-50"><span class="font-weight-bold">Période d'accueil :</span> du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
             </tr>
         </table>
     </div>
@@ -222,30 +225,7 @@
             <p class="font-italic px-2 pt-2">Connaissances/compétences/comportement/adaptation/mode de
                 vie/projets/propositions...</p>
             <p class="p-2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
-                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
-                sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
-                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
-                voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
-                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
-                sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
-                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
-                voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
-                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
-                sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
-                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
-                voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
-                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
-                sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
-                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
-                voluptates!
+                {{ $bilan->rapport }}
             </p>
         </div>
     </div>
@@ -283,7 +263,7 @@
                 <td class="w-50"><span class="font-weight-bold">Classe :</span> {{ $eleve->classe }}</td>
             </tr>
             <tr>
-                <td class="w-50"><span class="font-weight-bold">Période d'accueil :</span> {{ $eleve->nom }}</td>
+                <td class="w-50"><span class="font-weight-bold">Période d'accueil :</span> du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
             </tr>
         </table>
     </div>
@@ -296,32 +276,7 @@
                 autres élèves ? qu'as-tu retenu de ces journées passées à l'APCIS ?
             </p>
             <p class="p-2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse et excepturi ipsa laborum nostrum optio
-                ullam ut. Accusamus, ad aspernatur atque doloribus eum facere officia, quae quasi saepe, sed ut.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
-                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
-                sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
-                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
-                voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
-                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
-                sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
-                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
-                voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
-                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
-                sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
-                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
-                voluptates!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dignissimos dolorem doloribus dolorum
-                explicabo, fugit, iste iusto laboriosam libero nulla numquam odio omnis pariatur, placeat qui reiciendis
-                sequi ut voluptatum?
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam aspernatur dolor eius explicabo
-                facere in ipsum nam, neque quod, soluta tenetur vitae voluptatum! Architecto asperiores ea est ipsam
-                voluptates!
+                {{ $bilan->evaluation }}
             </p>
         </div>
     </div>

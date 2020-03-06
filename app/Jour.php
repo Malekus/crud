@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jour extends Model
 {
 
-    protected $fillable = ['dateExclu', 'matinAbsent', 'apremAbsent', 'matinRetard', 'apremRetard', 'travail'];
+    protected $fillable = ['dateExclu', 'matinAbsent', 'apremAbsent', 'matinRetard', 'apremRetard', 'travailMatin', "travailAprem"];
 
     public function planning()
     {

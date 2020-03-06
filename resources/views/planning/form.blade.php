@@ -95,18 +95,12 @@
                 @if($jour->matinRetard == 1 and $jour->apremRetard == 1)
                     a été en retard le matin et l'après-midi.
                 @endif
-                {{ $jour->travail ? $jour->travail : 'Aucun travail assigné.'  }}
                 </p>
+                <p>Travail matin : {{ $jour->travailMatin ? $jour->travailMatin : 'Aucun travail assigné.'  }}</p>
+                <p>Travail après-midi : {{ $jour->travailAprem ? $jour->travailAprem : 'Aucun travail assigné.'  }}</p>
             @endforeach
-
-            {{--
-            {{ \App\Http\Controllers\PlanningController::showTable($model->id) }}
-            --}}
-
-
         </div>
         <div class="modal-footer">
-
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         </div>
     @endif
@@ -150,9 +144,16 @@
                 </div>
 
                 <div class="form-group row justify-content-center">
-                    {!! Form::label('travail_'.$key.'_'.$model->id, 'Travail', ['class' => 'col-lg-2 col-form-label']) !!}
+                    {!! Form::label('travailMatin_'.$key.'_'.$model->id, 'Travail matin', ['class' => 'col-lg-2 col-form-label']) !!}
                     <div class="col-lg-6">
-                        {!! Form::text('travail_'.$key.'_'.$model->id, $jour->travail ? $jour->travail : null, ['class' => 'form-control']) !!}
+                        {!! Form::text('travailMatin_'.$key.'_'.$model->id, $jour->travailMatin ? $jour->travailMatin : null, ['class' => 'form-control']) !!}
+                    </div>
+                </div>
+
+                <div class="form-group row justify-content-center">
+                    {!! Form::label('travailAprem_'.$key.'_'.$model->id, 'Travail après-midi', ['class' => 'col-lg-2 col-form-label']) !!}
+                    <div class="col-lg-6">
+                        {!! Form::text('travailAprem_'.$key.'_'.$model->id, $jour->travailAprem ? $jour->travailAprem : null, ['class' => 'form-control']) !!}
                     </div>
                 </div>
 

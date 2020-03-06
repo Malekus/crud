@@ -63,7 +63,7 @@ class PlanningController extends Controller
         $keys = array_keys($request->except(['_token', '_method']));
         //dd($keys);
         foreach ($keys as $key) {
-            $r = ['matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0, 'travail' => null];
+            $r = ['matinAbsent' => 0, 'apremAbsent' => 0, 'apremRetard' => 0, 'matinRetard' => 0, 'travailMatin' => null, 'travailAprem' => null];
             $r[] = $request->get($key);
             $planning->jours[explode('_', $key)[1]]->update([explode('_', $key)[0] => $request->get($key)]);
         }

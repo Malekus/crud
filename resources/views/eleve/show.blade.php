@@ -128,6 +128,9 @@
                                                         data-target="#deleteModal{{ $bilan->id }}">
                                                     <span class="icon"><i class="fas fa-trash-alt"></i></span>
                                                 </button>
+                                                <a href="{{ route('rapport.exportPDF', $bilan->id) }}" class="btn btn-dark">
+                                                    <span class="icon"><i class="fas fa-file"></i></span>
+                                                </a>
                                             </td>
                                         </tr>
                                         <div class="no-height">
