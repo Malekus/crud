@@ -16,9 +16,8 @@ class RapportController extends Controller
     {
         $etablissements = Etablissement::all()->pluck('full_name', 'id');
         $educateurs = Educateur::all()->pluck('full_name', 'id');
-        $eleves = Eleve::all();
+        $eleves = Eleve::with('etablissement', 'educateur')->get(); //->with('etablissement');
         return view('rapport.index', compact('eleves'));
-        //return view('rapport.index', compact(['eleves', 'etablissements', 'educateurs']));
     }
 
     public function exportPDF($id)

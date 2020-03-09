@@ -82,7 +82,6 @@
     <script>
         $(document).ready(function () {
             var table = $('#datatable').DataTable({
-  /*
                 language : {
                     "sEmptyTable":     "Aucune donnée disponible dans le tableau",
                     "sInfo":           "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
@@ -113,17 +112,23 @@
                         }
                     }
                 },
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'pdf'
-                ]
-*/              dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                dom: "<'row'<'col-sm-12 col-md-6'lB><'col-sm-12 col-md-6'f>>" +
                     "<'row'<'col-sm-12'tr>>" +
                     "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+
                 buttons: [
-                    'copy', 'excel', 'pdf'
+                    {
+                        text: 'Exporter',
+                        className: 'btn btn-primary',
+                        action: function ( e, dt, node, config ) {
+                            alert( 'Button activated' );
+                        }
+                    }
                 ]
             });
         });
+
+        // ml-3 d-inline-block
+
     </script>
 @endsection
