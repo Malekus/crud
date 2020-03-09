@@ -24,7 +24,7 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('rapport', 'Rapport', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    <textarea class="form-control" minlength="10" required name="rapport" id="rapport" rows="10" cols="50" style="resize: none;"></textarea>
+                    <textarea class="form-control" minlength="10" required name="rapport" id="rapport" rows="8" cols="50" style="resize: none;"></textarea>
                     <div class="invalid-feedback">
                         Saisir un rapport
                     </div>
@@ -33,10 +33,13 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('evaluation', 'Évaluation de l\'élève', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    <textarea class="form-control" minlength="10" name="evaluation" id="evaluation" rows="10" cols="50" style="resize: none;"></textarea>
-                    <div class="invalid-feedback">
-                        Saisir un évaluation
-                    </div>
+                    <textarea class="form-control" minlength="10" name="evaluation" id="evaluation" rows="8" cols="50" style="resize: none;"></textarea>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                {!! Form::label('mesure', 'Mesures mises en place', ['class' => 'col-lg-2 col-form-label']) !!}
+                <div class="col-lg-6">
+                    <textarea class="form-control" minlength="10" name="mesure" id="mesure" rows="5" cols="50" style="resize: none;"></textarea>
                 </div>
             </div>
         </div>
@@ -72,7 +75,9 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('rapport', 'Rapport', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    <textarea class="form-control" minlength="10" required name="rapport" id="{{ 'rapport_'.$model->id }}" rows="10" cols="50" style="resize: none;">{{ $model->rapport }}</textarea>
+                    <textarea class="form-control" minlength="10" required name="rapport"
+                              id="{{ 'rapport_'.$model->id }}" rows="8" cols="50"
+                              style="resize: none;">{{ $model->rapport }}</textarea>
                     <div class="invalid-feedback">
                         Saisir un rapport
                     </div>
@@ -81,7 +86,15 @@
             <div class="form-group row justify-content-center">
                 {!! Form::label('evaluation', 'Évaluation de l\'élève', ['class' => 'col-lg-2 col-form-label']) !!}
                 <div class="col-lg-6">
-                    <textarea class="form-control" minlength="10" name="evaluation" id="{{ 'evaluation_'.$model->id }}" rows="10" cols="50" style="resize: none;">{{ $model->evaluation }}</textarea>
+                    <textarea class="form-control" minlength="10" name="evaluation" id="{{ 'evaluation_'.$model->id }}"
+                              rows="8" cols="50" style="resize: none;">{{ $model->evaluation }}</textarea>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                {!! Form::label('mesure', 'Mesures mises en place', ['class' => 'col-lg-2 col-form-label']) !!}
+                <div class="col-lg-6">
+                    <textarea class="form-control" name="mesure" id="{{ 'mesure_'.$model->id }}" rows="5" cols="50"
+                              style="resize: none;">{{ $model->mesure }}</textarea>
                 </div>
             </div>
         </div>
@@ -107,7 +120,8 @@
     @if($typeForm == "show")
         <div class="modal-body">
             <p>
-                Période du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}
+                Période du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }}
+                au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}
             </p>
             <p class="font-weight-bold">Bilan de l'éducateur</p>
             <p>
@@ -116,6 +130,10 @@
             <p class="font-weight-bold">Évaluation de l'élève</p>
             <p>
                 {{ $bilan->evaluation }}
+            </p>
+            <p class="font-weight-bold">Mesures mises en place</p>
+            <p>
+                {{ $bilan->mesure }}
             </p>
         </div>
         <div class="modal-footer">
@@ -127,6 +145,7 @@
 <style>
     .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 
-        padding: 5px !important; // currently 8px
+        padding: 5px !important;
+    / / currently 8 px
     }
 </style>

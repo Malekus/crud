@@ -15,6 +15,7 @@ class CreateBilansTable extends Migration
             $table->date('dateFin');
             $table->text('rapport');
             $table->text('evaluation')->nullable();
+            $table->text('mesure')->nullable();
             $table->integer('eleve_id')->unsigned()->index();
             $table->foreign('eleve_id')->references('id')->on('eleves')->onDelete('cascade');
             $table->timestamps();

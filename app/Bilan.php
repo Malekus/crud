@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bilan extends Model
 {
-    protected $fillable = ['dateDebut', 'dateFin', 'rapport', 'evaluation', 'eleve_id'];
+    protected $fillable = ['dateDebut', 'dateFin', 'rapport', 'evaluation', 'mesure', 'eleve_id'];
 
     protected static function boot()
     {
@@ -101,5 +101,10 @@ class Bilan extends Model
     public function setEvaluationAttribute($value)
     {
         $this->attributes['evaluation'] = trim($value);
+    }
+
+    public function setMesureAttribute($value)
+    {
+        $this->attributes['mesure'] = trim($value);
     }
 }

@@ -28,8 +28,6 @@
     }
 </style>
 
-{{ \Carbon\Carbon::parse($jours[0]->dateExclu)->format('l d m yy')}}
-
 <div class="container-fluid">
     <div class="row">
         <table class="w-100">
@@ -63,10 +61,12 @@
             </tr>
             <tr>
                 <td><span class="font-weight-bold">Classe</span> : {{ $eleve->classe }}</td>
-                <td><span class="font-weight-bold">Etablissement</span> : {{ $eleve->etablissement->full_name }}</td>
+                <td><span class="font-weight-bold">Établissement</span> : {{ $eleve->etablissement->full_name }}</td>
             </tr>
             <tr>
-                <td><span class="font-weight-bold">Période d'accueil</span> : du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
+                <td><span class="font-weight-bold">Période d'accueil</span> :
+                    du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }}
+                    au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
             </tr>
         </table>
     </div>
@@ -86,6 +86,19 @@
                 <th>Après-midi</th>
             </tr>
             </thead>
+            <tbody>
+            @foreach($jours as $key => $jour)
+                <tr>
+                    <td class="font-weight-bold align-middle">{{ ucfirst(\Carbon\Carbon::parse($jour->dateExclu)->dayName) }}</td>
+                    <td>{{ $jour->matinAbsent ? "oui": '' }}</td>
+                    <td>{{ $jour->apremAbsent ? "oui": '' }}</td>
+                    <td>{{ $jour->matinRetard ? "oui": '' }}</td>
+                    <td>{{ $jour->apremRetard ? "oui": '' }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+
+            <!--
             <tbody>
             <tr>
                 <td class="font-weight-bold">Lundi</td>
@@ -123,6 +136,7 @@
                 <td>x</td>
             </tr>
             </tbody>
+            -->
         </table>
     </div>
 
@@ -138,35 +152,16 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($jours as $key => $jour)
+                <tr>
+                    <td class="font-weight-bold align-middle">{{ ucfirst(\Carbon\Carbon::parse($jour->dateExclu)->dayName) }}</td>
+                    <td>{{ $jour->travailMatin }}</td>
+                    <td>{{ $jour->travailAprem }}</td>
+                </tr>
+            @endforeach
             <tr>
-                <td class="font-weight-bold">Lundi</td>
-                <td>X</td>
-                <td>X</td>
-            </tr>
-            <tr>
-                <td class="font-weight-bold">Mardi</td>
-                <td>X</td>
-                <td>X</td>
-            </tr>
-            <tr>
-                <td class="font-weight-bold">Mercredi</td>
-                <td>X</td>
-                <td>X</td>
-            </tr>
-            <tr>
-                <td class="font-weight-bold">Jeudi</td>
-                <td>X</td>
-                <td>X</td>
-            </tr>
-            <tr>
-                <td class="font-weight-bold">Vendredi</td>
-                <td>X</td>
-                <td>X</td>
-            </tr>
-            <tr>
-                <td class="font-weight-bold">Mesures mises en place</td>
-                <td>X</td>
-                <td>X</td>
+                <td class="font-weight-bold align-middle">Mesures mises en place</td>
+                <td colspan="2" class="text-left">{{ $bilan->mesure }}</td>
             </tr>
             </tbody>
         </table>
@@ -212,10 +207,12 @@
     <div class="row">
         <table class="w-100">
             <tr>
-                <td class="w-50"><span class="font-weight-bold">Nom et prénom de l'élève :</span> {{ $eleve->nom }}</td>
+                <td class="w-50"><span class="font-weight-bold">Nom et prénom de l'élève :</span> {{ $eleve->nom }} {{ $eleve->prenom }}</td>
             </tr>
             <tr>
-                <td class="w-50"><span class="font-weight-bold">Période d'accueil :</span> du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
+                <td class="w-50"><span class="font-weight-bold">Période d'accueil :</span>
+                    du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }}
+                    au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
             </tr>
         </table>
     </div>
@@ -241,9 +238,13 @@
             <tbody>
 
             <tr>
-                <td class="text-left"><img style="width: 100px;" src="https://acte.apcis-association.fr/assets/images/apcis.jpg"></td>
-                <td class="w-100 text-center"><img style="width: 100px;" src="https://acte.apcis-association.fr/assets/images/academie_creteil.png"></td>
-                <td class="text-right"><img style="width: 150px;" src="https://acte.apcis-association.fr/assets/images/logo_ue.png"></td>
+                <td class="text-left"><img style="width: 100px;"
+                                           src="https://acte.apcis-association.fr/assets/images/apcis.jpg"></td>
+                <td class="w-100 text-center"><img style="width: 100px;"
+                                                   src="https://acte.apcis-association.fr/assets/images/academie_creteil.png">
+                </td>
+                <td class="text-right"><img style="width: 150px;"
+                                            src="https://acte.apcis-association.fr/assets/images/logo_ue.png"></td>
             </tr>
 
             </tbody>
@@ -259,11 +260,13 @@
     <div class="row">
         <table class="w-100">
             <tr>
-                <td class="w-50"><span class="font-weight-bold">Nom et prénom de l'élève :</span> {{ $eleve->nom }}</td>
+                <td class="w-50"><span class="font-weight-bold">Nom et prénom de l'élève :</span> {{ $eleve->nom }} {{ $eleve->prenom }}</td>
                 <td class="w-50"><span class="font-weight-bold">Classe :</span> {{ $eleve->classe }}</td>
             </tr>
             <tr>
-                <td class="w-50"><span class="font-weight-bold">Période d'accueil :</span> du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
+                <td class="w-50"><span class="font-weight-bold">Période d'accueil :</span>
+                    du {{ \Carbon\Carbon::parse($bilan->dateDebut)->format('d/m/Y') }}
+                    au {{ \Carbon\Carbon::parse($bilan->dateFin)->format('d/m/Y') }}</td>
             </tr>
         </table>
     </div>
