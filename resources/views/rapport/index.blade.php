@@ -3,10 +3,12 @@
 @section('endStyle')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css">
-    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css"/>
     <!--
         <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
     -->
+
+
 @endsection
 
 @section('content')
@@ -19,7 +21,7 @@
                             <h1 class="text-capitalize"><i class="fas fa-file mr-2"></i>rapport</h1>
                         </div>
                     </div>
-                    <div>
+                    <form id="formDataTable">
                         <table id="datatable" class="table table-bordered display" style="width:100%">
                             <thead>
                             <tr>
@@ -46,7 +48,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -70,6 +72,7 @@
     <script>
         $(document).ready(function () {
             var table = $('#datatable').DataTable({
+                /*
                 language: {
                     "sEmptyTable": "Aucune donnée disponible dans le tableau",
                     "sInfo": "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
@@ -100,18 +103,35 @@
                         }
                     }
                 },
+                */
+                processing: true,
+                language: {
+                    url : "https://cdn.datatables.net/plug-ins/1.10.20/i18n/French.json",
+                    //processing: '<div class="spinner-border" role="status"> <span class="sr-only">Loading...</span> </div>'
+                },
                 dom:    "<'row'<'col-sm-12 col-md-6'<'d-inline-block'l><'d-inline-block ml-3'B>><'col-sm-12 col-md-6'f>>" +
                         "<'row'<'col-sm-12'tr>>" +
                         "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-                buttons: [
-                    {
-                        text: '<i class="fas fa-download"></i> Exporter',
-                        className: 'btn btn-primary',
-                        action: function (e, dt, node, config) {
-                            alert('Button activated');
+                buttons: {
+                    buttons: [
+                        {
+                            text: '<i class="fas fa-download"></i> Exporter',
+                            attr : {id: "btnSubmit"},
+
+                            action: function (e, dt, node, config) {
+                                toto()
+                            }
+
+
+                        }
+                    ],
+                    dom: {
+                        button: {
+                            tag: "button",
+                            className: "btn btn-success",
                         }
                     }
-                ],
+                },
                 columnDefs: [{
                     orderable: false,
                     className: 'select-checkbox',
@@ -120,15 +140,18 @@
                         selectRow: true
                     }
                 }],
-                select : {
-                    style : 'multi', //selector : 'td:first-child'
+                select: {
+                    style: 'multi', //selector : 'td:first-child'
                 },
-                order : [[1, 'asc']],
-                scrollY : '50vh',
-                scrollCollapse : true,
-                processing : true
+                order: [[1, 'asc']],
+                scrollY: '65vh'
+                //scrollCollapse : true,
             });
-            console.log(table.buttons.className)
+
+            var toto = $("#btnSubmit").click(function () {
+                console.log("Test");
+            })
+
         });
     </script>
 @endsection

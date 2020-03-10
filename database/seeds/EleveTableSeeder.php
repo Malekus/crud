@@ -12,6 +12,6 @@ class EleveTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Eleve::class, 100)->create();
+        factory(Eleve::class, 1000)->create();
     }
 }
