@@ -3,8 +3,10 @@
 @section('endStyle')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <!--
+        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    -->
 @endsection
 
 @section('content')
@@ -58,8 +60,10 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
-
+    <script src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+    <!--
+        <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    -->
 @endsection
 
 @section('jafter')
@@ -75,7 +79,7 @@
                     "sInfoThousands": ",",
                     "sLengthMenu": "Afficher _MENU_ éléments",
                     "sLoadingRecords": "Chargement...",
-                    "sProcessing": "Traitement...",
+                    "sProcessing": 'Traitement en cours...', // <div class="spinner-border" role="status"> <span class="sr-only">Loading...</span> </div>
                     "sSearch": "Rechercher :",
                     "sZeroRecords": "Aucun élément correspondant trouvé",
                     "oPaginate": {
@@ -112,14 +116,19 @@
                     orderable: false,
                     className: 'select-checkbox',
                     targets: 0,
-                    checkboxes: true
+                    checkboxes: {
+                        selectRow: true
+                    }
                 }],
-                select: {
-                    style: 'multi',
-                    selector: 'td:first-child'
+                select : {
+                    style : 'multi', //selector : 'td:first-child'
                 },
-                order: [[1, 'asc']]
+                order : [[1, 'asc']],
+                scrollY : '50vh',
+                scrollCollapse : true,
+                processing : true
             });
+            console.log(table.buttons.className)
         });
     </script>
 @endsection
