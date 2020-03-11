@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css"/>
     <!--
-        <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
     -->
 
 
@@ -64,7 +64,7 @@
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.bootstrap4.min.js"></script>
     <script src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
     <!--
-        <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
     -->
 @endsection
 
@@ -72,38 +72,6 @@
     <script>
         $(document).ready(function () {
             var table = $('#datatable').DataTable({
-                /*
-                language: {
-                    "sEmptyTable": "Aucune donnée disponible dans le tableau",
-                    "sInfo": "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
-                    "sInfoEmpty": "Affichage de l'élément 0 à 0 sur 0 élément",
-                    "sInfoFiltered": "(filtré à partir de _MAX_ éléments au total)",
-                    "sInfoPostFix": "",
-                    "sInfoThousands": ",",
-                    "sLengthMenu": "Afficher _MENU_ éléments",
-                    "sLoadingRecords": "Chargement...",
-                    "sProcessing": 'Traitement en cours...', // <div class="spinner-border" role="status"> <span class="sr-only">Loading...</span> </div>
-                    "sSearch": "Rechercher :",
-                    "sZeroRecords": "Aucun élément correspondant trouvé",
-                    "oPaginate": {
-                        "sFirst": "Premier",
-                        "sLast": "Dernier",
-                        "sNext": "Suivant",
-                        "sPrevious": "Précédent"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": activer pour trier la colonne par ordre croissant",
-                        "sSortDescending": ": activer pour trier la colonne par ordre décroissant"
-                    },
-                    "select": {
-                        "rows": {
-                            "_": "%d lignes sélectionnées",
-                            "0": "Aucune ligne sélectionnée",
-                            "1": "1 ligne sélectionnée"
-                        }
-                    }
-                },
-                */
                 processing: true,
                 language: {
                     url : "https://cdn.datatables.net/plug-ins/1.10.20/i18n/French.json",
@@ -117,12 +85,21 @@
                         {
                             text: '<i class="fas fa-download"></i> Exporter',
                             attr : {id: "btnSubmit"},
-
                             action: function (e, dt, node, config) {
-                                toto()
+                                //var rows_selected = table.column(0).checkboxes.selected();
+                                var count = table.rows( { selected: true } ).count();
+                                console.log(count)
+                                /*
+                                $.each(rows_selected, function(index, rowId){
+                                    // Create a hidden element
+                                    $('#formDataTable').append(
+                                        $('<input>')
+                                            .attr('type', 'hidden')
+                                            .attr('name', 'id[]')
+                                            .val(rowId)
+                                    );
+                                });*/
                             }
-
-
                         }
                     ],
                     dom: {
@@ -147,11 +124,6 @@
                 scrollY: '65vh'
                 //scrollCollapse : true,
             });
-
-            var toto = $("#btnSubmit").click(function () {
-                console.log("Test");
-            })
-
         });
     </script>
 @endsection
