@@ -39,4 +39,9 @@ class Eleve extends Model
         $this->attributes['prenom'] = ucfirst($value);
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->nom . ' ' . $this->prenom;
+    }
+
 }

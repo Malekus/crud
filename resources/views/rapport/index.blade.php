@@ -30,11 +30,10 @@
                             <h1 class="text-capitalize"><i class="fas fa-file mr-2"></i>rapport</h1>
                         </div>
                     </div>
-                    <form id="formDataTable">
                         <table id="datatable" class="table table-bordered display" style="width:100%">
                             <thead>
                             <tr>
-                                <th></th>
+                                <th class="select-checkbox"><input id="checkBox" type="checkbox"></th>
                                 <th>ID</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
@@ -57,7 +56,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                    </form>
                 </div>
             </div>
         </div>
@@ -83,101 +81,54 @@
             var table = $('#datatable').DataTable({
                 processing: true,
                 language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/French.json",
+                    url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
                 },
                 dom: "<'row'<'col-sm-12 col-md-6'<'d-inline-block'l><'d-inline-block ml-3'B>><'col-sm-12 col-md-6'f>>" +
-                    "<'row'<'col-sm-12'tr>>" +
-                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
                 buttons: {
                     buttons: [
                         {
                             text: '<i class="fas fa-download"></i> Exporter',
-                            //attr : {id: "btnSubmit"},
+                            attr : {id: "btnExport"},
                             action: function (e, dt, node, config) {
                                 var count = table.rows({selected: true}).count();
-                                console.log(count)
+                                //var rows_selected = table.column(0).checkboxes.selected();
+                                console.log(count, table.rows('.selected').data().length)
                             }
                         }
                     ],
                     dom: {
                         button: {
                             tag: "button",
-                            className: "btn btn-success",
+                            className: "btn btn-success"
                         }
                     }
                 },
                 columnDefs: [{
                     orderable: false,
                     className: 'select-checkbox',
-                    targets: 0,
+                    targets: 0
                     /*checkboxes: {
-                        selectRow: true
-                    }*/
+                     selectRow: true
+                     }*/
                 }],
                 select: {
                     style: 'multi',
                     selector: 'td:first-child'
                 },
-                order: [[1, 'asc']],
-                scrollY: '65vh'
+                order: [[1, 'asc']]
+                //scrollY: '65vh'
                 //scrollCollapse : true,
             });
-/*
-            table.on("click", "th.select-checkbox", function () {
-                if ($("th.select-checkbox").hasClass("selected")) {
-                    table.rows().deselect();
-                    $("th.select-checkbox").removeClass("selected");
-                } else {
+            $('#checkBox').on('click', function() {
+                if ($('#checkBox').is(':checked')) {
                     table.rows().select();
-                    $("th.select-checkbox").addClass("selected");
                 }
-            }).on("select deselect", function () {
-                ("Some selection or deselection going on")
-                if (table.rows({
-                    selected: true
-                }).count() !== table.rows().count()) {
-                    $("th.select-checkbox").removeClass("selected");
-                } else {
-                    $("th.select-checkbox").addClass("selected");
+                else {
+                    table.rows().deselect();
                 }
             });
-            */
         });
-
-        /*
-        let example = $('#datatable').DataTable({
-            columnDefs: [{
-                orderable: false,
-                className: 'select-checkbox',
-                targets: 0
-            }],
-            select: {
-                style: 'multi',
-                selector: 'td:first-child'
-            },
-            order: [
-                [1, 'asc']
-            ]
-        });
-        example.on("click", "th.select-checkbox", function() {
-            if ($("th.select-checkbox").hasClass("selected")) {
-                example.rows().deselect();
-                $("th.select-checkbox").removeClass("selected");
-            } else {
-                example.rows().select();
-                $("th.select-checkbox").addClass("selected");
-            }
-        }).on("select deselect", function() {
-            ("Some selection or deselection going on")
-            if (example.rows({
-                selected: true
-            }).count() !== example.rows().count()) {
-                $("th.select-checkbox").removeClass("selected");
-            } else {
-                $("th.select-checkbox").addClass("selected");
-            }
-        });
-        */
-
     </script>
 @endsection

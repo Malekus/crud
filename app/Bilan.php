@@ -107,4 +107,10 @@ class Bilan extends Model
     {
         $this->attributes['mesure'] = trim($value);
     }
+
+    public function getPeriodeAttribute()
+    {
+        return Carbon::parse($this->dateDebut)->format('d-m-Y') . " au " . Carbon::parse($this->dateFin)->format('d-m-Y');
+    }
+
 }

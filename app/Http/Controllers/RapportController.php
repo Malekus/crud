@@ -36,7 +36,7 @@ class RapportController extends Controller
         $jours = Jour::where('planning_id',$planning->id)->get();
         //return view('rapport.exportPDF', ['eleve' => $bilan->eleve, 'bilan' => $bilan, 'jours' => $jours]);
         $pdf = PDF::loadView('rapport.exportPDF', ['eleve' => $bilan->eleve, 'bilan' => $bilan, 'jours' => $jours]);
-        return $pdf->stream();
+        return $pdf->stream($bilan->eleve->etablissement->full_name.' '. $bilan->periode." ".$bilan->eleve->full_name.'.pdf');
     }
 
 }
