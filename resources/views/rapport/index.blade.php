@@ -3,11 +3,20 @@
 @section('endStyle')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css"/>
     <!--
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css"/>
     -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
 
+    <style>
+        table.dataTable tr th.select-checkbox.selected::after {
+            content: "✔";
+            margin-top: -11px;
+            margin-left: -4px;
+            text-align: center;
+            text-shadow: rgb(176, 190, 217) 1px 1px, rgb(176, 190, 217) -1px -1px, rgb(176, 190, 217) 1px -1px, rgb(176, 190, 217) -1px 1px;
+        }
+    </style>
 
 @endsection
 
@@ -62,10 +71,10 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.bootstrap4.min.js"></script>
-    <script src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
     <!--
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <script src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
     -->
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
 @endsection
 
 @section('jafter')
@@ -74,31 +83,19 @@
             var table = $('#datatable').DataTable({
                 processing: true,
                 language: {
-                    url : "https://cdn.datatables.net/plug-ins/1.10.20/i18n/French.json",
-                    //processing: '<div class="spinner-border" role="status"> <span class="sr-only">Loading...</span> </div>'
+                    url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/French.json",
                 },
-                dom:    "<'row'<'col-sm-12 col-md-6'<'d-inline-block'l><'d-inline-block ml-3'B>><'col-sm-12 col-md-6'f>>" +
-                        "<'row'<'col-sm-12'tr>>" +
-                        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                dom: "<'row'<'col-sm-12 col-md-6'<'d-inline-block'l><'d-inline-block ml-3'B>><'col-sm-12 col-md-6'f>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
                 buttons: {
                     buttons: [
                         {
                             text: '<i class="fas fa-download"></i> Exporter',
-                            attr : {id: "btnSubmit"},
+                            //attr : {id: "btnSubmit"},
                             action: function (e, dt, node, config) {
-                                //var rows_selected = table.column(0).checkboxes.selected();
-                                var count = table.rows( { selected: true } ).count();
+                                var count = table.rows({selected: true}).count();
                                 console.log(count)
-                                /*
-                                $.each(rows_selected, function(index, rowId){
-                                    // Create a hidden element
-                                    $('#formDataTable').append(
-                                        $('<input>')
-                                            .attr('type', 'hidden')
-                                            .attr('name', 'id[]')
-                                            .val(rowId)
-                                    );
-                                });*/
                             }
                         }
                     ],
@@ -113,17 +110,74 @@
                     orderable: false,
                     className: 'select-checkbox',
                     targets: 0,
-                    checkboxes: {
+                    /*checkboxes: {
                         selectRow: true
-                    }
+                    }*/
                 }],
                 select: {
-                    style: 'multi', //selector : 'td:first-child'
+                    style: 'multi',
+                    selector: 'td:first-child'
                 },
                 order: [[1, 'asc']],
                 scrollY: '65vh'
                 //scrollCollapse : true,
             });
+/*
+            table.on("click", "th.select-checkbox", function () {
+                if ($("th.select-checkbox").hasClass("selected")) {
+                    table.rows().deselect();
+                    $("th.select-checkbox").removeClass("selected");
+                } else {
+                    table.rows().select();
+                    $("th.select-checkbox").addClass("selected");
+                }
+            }).on("select deselect", function () {
+                ("Some selection or deselection going on")
+                if (table.rows({
+                    selected: true
+                }).count() !== table.rows().count()) {
+                    $("th.select-checkbox").removeClass("selected");
+                } else {
+                    $("th.select-checkbox").addClass("selected");
+                }
+            });
+            */
         });
+
+        /*
+        let example = $('#datatable').DataTable({
+            columnDefs: [{
+                orderable: false,
+                className: 'select-checkbox',
+                targets: 0
+            }],
+            select: {
+                style: 'multi',
+                selector: 'td:first-child'
+            },
+            order: [
+                [1, 'asc']
+            ]
+        });
+        example.on("click", "th.select-checkbox", function() {
+            if ($("th.select-checkbox").hasClass("selected")) {
+                example.rows().deselect();
+                $("th.select-checkbox").removeClass("selected");
+            } else {
+                example.rows().select();
+                $("th.select-checkbox").addClass("selected");
+            }
+        }).on("select deselect", function() {
+            ("Some selection or deselection going on")
+            if (example.rows({
+                selected: true
+            }).count() !== example.rows().count()) {
+                $("th.select-checkbox").removeClass("selected");
+            } else {
+                $("th.select-checkbox").addClass("selected");
+            }
+        });
+        */
+
     </script>
 @endsection
