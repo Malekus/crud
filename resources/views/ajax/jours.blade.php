@@ -8,7 +8,6 @@
                 </button>
             </div>
             <div class="modal-body">
-
                 @foreach($jours as $key => $jourExlus)
                     <p>Ville: {{ $key }}</p>
                     <table class="table table-bordered table-hover">
@@ -18,10 +17,17 @@
                             <th>Action</th>
                         </tr>
                         @foreach($jourExlus as $jour)
-                            <tr>
+                            <tr class="text-center">
                                 <td>{{ $jour->etablissement }}</td>
                                 <td>{{ $jour->nom_prenom }}</td>
-                                <td>{{ \Carbon\Carbon::parse($jour->dateExclu)->format('d-m-Y') }}</td>
+                                <td>
+                                    <a class="btn btn-success" href="{{ route('eleve.show', $jour->planning->bilan->eleve) }}">
+                                        <span class="icon"><i class="fas fa-search"></i></span>
+                                    </a>
+                                    <a href="{{ route('rapport.exportPDF', $jour->planning->bilan) }}" target="_blank" class="btn btn-dark">
+                                        <span class="icon"><i class="fas fa-file"></i></span>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>

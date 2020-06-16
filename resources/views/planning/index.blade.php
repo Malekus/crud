@@ -219,7 +219,8 @@
                 }
             });
 
-            $('.partMonthDays').on('click', '.jour', function () {
+            $('.partMonthDays').on('click', '.jour', function (e) {
+                e.stopPropagation();
                 if($(this).hasClass('nothingToday')) return false;
                 if($(this).hasClass('weekendDay')) return false;
                 var date = $(this).attr('data-id');
